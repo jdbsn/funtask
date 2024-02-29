@@ -5,27 +5,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.UUID;
 
 @Entity
+@Data
+@AllArgsConstructor
 public class Responsavel {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(name = "id_responsavel")
-  private UUID id;
 
-  @Column(nullable = false)
-  private String nome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id_responsavel")
+    private UUID id;
 
-  @Column(nullable = false)
-  private String senha;
+    @Column(nullable = false)
+    private String nome;
 
-  @Column(nullable = false)
-  private String pin;
+    @Column(nullable = false)
+    private String senha;
 
-  public Responsavel(String senha, String nome, String pin) {
-    this.nome = nome;
-    this.senha = senha;
-    this.pin = pin;
-  }
+    @Column(nullable = false)
+    private String pin;
+
 }
