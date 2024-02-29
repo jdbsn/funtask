@@ -1,13 +1,11 @@
 package com.mang.funtask.dominio.modelos;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.util.Set;
+import jakarta.persistence.OneToOne;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,22 +15,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Responsavel {
+public class Conta {
 
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(name = "id_responsavel")
+  @Column(name = "id_conta")
   private UUID id;
 
   @Column(nullable = false)
-  private String nome;
+  private Double saldo;
 
-  @Column(nullable = false)
-  private String senha;
-
-  @Column(nullable = false)
-  private String pin;
-
-  @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL, orphanRemoval = true)
-  private Set<Crianca> criancas;
+  @OneToOne(mappedBy = "conta")
+  private Crianca crianca;
 }
