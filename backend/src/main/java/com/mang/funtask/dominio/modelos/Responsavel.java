@@ -29,4 +29,8 @@ public class Responsavel {
     @Column(nullable = false)
     private String pin;
 
+    public Responsavel() {
+
+    }
+
 }
