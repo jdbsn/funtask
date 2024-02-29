@@ -1,8 +1,11 @@
 package com.mang.funtask.repositorios;
 
+import com.mang.funtask.dominio.modelos.Atividade;
+import java.util.UUID;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AtividadeRepositorio {
+public interface AtividadeRepositorio extends JpaRepository<Atividade, UUID> {
 
 }
