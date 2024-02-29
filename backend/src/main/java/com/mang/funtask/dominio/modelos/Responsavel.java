@@ -23,6 +23,10 @@ public class Responsavel {
   @Column(nullable = false)
   private String pin;
 
+  public Responsavel() {
+
+  }
+
   public Responsavel(String senha, String nome, String pin) {
     this.nome = nome;
     this.senha = senha;
