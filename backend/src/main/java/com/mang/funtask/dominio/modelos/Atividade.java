@@ -52,5 +52,4 @@ public class Atividade {
     this.frequencia = atividadeDTO.frequencia();
     this.foiConcluido = atividadeDTO.foiConcluido();
   }
-
 }
