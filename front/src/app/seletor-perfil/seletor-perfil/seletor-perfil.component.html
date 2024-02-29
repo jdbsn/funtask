@@ -1,1 +1,15 @@
-<p>seletor-perfil works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title id="titulo">Selecione um perfil</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup">
+      <mat-button-toggle *ngFor="let perfil of listaPerfil" class="custom-toggle" [disableRipple]="true" (click)="onSelecionado()">
+        <img [src]="perfil.icone" id="icone" />
+        <p id="nome">
+          {{ perfil.nome }}
+        </p>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-content>
+</mat-card>
