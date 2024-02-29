@@ -5,10 +5,9 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum Frequencia {
-  DIARIA("Diaria"),
-  SEMANAL("Semanal"),
-  MENSAL("Mensal");
+public enum TipoTransacao {
+  DEBITO("Debito"),
+  CREDITO("Credito");
 
   private final String valor;
 
