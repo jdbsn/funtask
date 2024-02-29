@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AtividadeServico {
+
   private final AtividadeRepositorio atividadeRepositorio;
 
   public AtividadeServico(AtividadeRepositorio atividadeRepositorio) {
@@ -22,4 +23,8 @@ public class AtividadeServico {
         .toList();
   }
 
+  public void salvarAtividade(AtividadeDTO atividadeDTO) {
+    Atividade atividade = new Atividade(atividadeDTO);
+    atividadeRepositorio.save(atividade);
+  }
 }
