@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'front';
+  mostrarBarra = true;
 
   constructor(private router: Router) {
-
+    this.router.events.pipe(
+      filter((event: any): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.mostrarBarra = event.url === '/';
+    });
   }
 
   onLogin() {

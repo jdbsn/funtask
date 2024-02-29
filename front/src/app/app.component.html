@@ -1,11 +1,11 @@
-<mat-toolbar color="primary">
-  <span>FunTask</span>
+<mat-toolbar color="primary" *ngIf="mostrarBarra">
+  <span id="titulo">FunTask</span>
   <span class="espacador"></span>
-      <button mat-button (click)="onCadastro()">
+      <button mat-button id="cadastro-btn" (click)="onCadastro()">
         Cadastro
       </button>
       <span class="espacador-botao"></span>
-      <button mat-button mat-raised-button color="secondary" (click)="onLogin()">
+      <button mat-button mat-raised-button color="secondary" id="login-btn" (click)="onLogin()">
         Login
       </button>
 </mat-toolbar>
