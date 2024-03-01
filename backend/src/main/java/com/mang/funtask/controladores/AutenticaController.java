@@ -18,7 +18,7 @@ public class AutenticaController {
 
     private AutenticaServico autenticaServico;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<String> autenticar(@RequestBody AcessoPerfilDTO dto) {
         Autenticavel perfil = autenticaServico.encontrarPerfil(dto.id());
 
