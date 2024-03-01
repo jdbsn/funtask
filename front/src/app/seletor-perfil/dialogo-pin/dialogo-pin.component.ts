@@ -13,6 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogoPinComponent {
 
   form: FormGroup;
+  msgErro: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: string,
@@ -24,16 +25,23 @@ export class DialogoPinComponent {
       this.form = this.formBuilder.group({
         pin: [null]
       });
-
+      this.msgErro = '';
   }
 
   onEnviar() {
     this.seletorPerfilService
-            .autenticarPin(this.data, this.form.value.pin)
-            .subscribe(_r => {
-              this.dialogRef.close();
-              this.router.navigate([''])
-            });
+      .autenticarPin(this.data, this.form.value.pin)
+      .subscribe(
+        {
+          next: () => {
+            this.dialogRef.close();
+            this.router.navigate([''])
+          },
+          error: (erro) => {
+            this.msgErro = erro.error;
+            }
+        }
+      );
   }
 
 }

@@ -12,24 +12,6 @@ import { Perfil } from '../modelo/perfil';
 })
 export class SeletorPerfilComponent {
 
-  // listaPerfil = [
-  //   {
-  //     id: '3c60ea6e-f945-48b2-94d8-82d00729130a',
-  //     nome: "Davi",
-  //     icone: "../../../assets/user_icon.png"
-  //   },
-  //   {
-  //     id: '86a649a5-f10a-4cdd-b1af-68907dce2aa4',
-  //     nome: "Livia",
-  //     icone: "../../../assets/user_icon.png"
-  //   },
-  //   {
-  //     id: '8fa13d0e-6905-455e-9001-a27ca60790f6',
-  //     nome: "Responsável",
-  //     icone: "../../../assets/user_icon.png"
-  //   }
-  // ];
-
   private readonly FOTO_PADRAO = '../../../assets/user_icon.png';
   listaPerfil$: Observable<Perfil[]>;
 
@@ -38,14 +20,17 @@ export class SeletorPerfilComponent {
       .pipe(
         map(perfis => perfis.map(perfil => ({
           ...perfil,
-          foto: perfil.foto || this.FOTO_PADRAO // Se a foto estiver vazia, use a foto padrão
+          foto: perfil.foto || this.FOTO_PADRAO
         })))
       );
-
   }
 
-  onSelecionado(id: string) {
-    this.dialogo.open(DialogoPinComponent, {data: id});
+  onSelecionado(id: string, animacaoAbrir: string, animacaoFechar: string) {
+    this.dialogo.open(DialogoPinComponent, {
+      data: id,
+      enterAnimationDuration: animacaoAbrir,
+      exitAnimationDuration: animacaoFechar
+    });
   }
 
 }

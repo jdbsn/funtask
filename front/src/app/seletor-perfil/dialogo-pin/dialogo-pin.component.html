@@ -6,7 +6,7 @@
       <input matInput type="password" formControlName="pin">
     </mat-form-field>
   </form>
-
+  <p *ngIf="msgErro" id="errorMsg">{{ msgErro }}</p>
   <mat-dialog-actions align="center">
     <button mat-stroked-button (click)="onEnviar()">Enviar</button>
     <button mat-stroked-button mat-dialog-close>Fechar</button>
