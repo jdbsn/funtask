@@ -1,0 +1,49 @@
+mat-card {
+  max-width: 90%;
+  max-height: 90%;
+  margin: 5em auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+.mat-button-toggle {
+  margin: 20px;
+  transition: transform 0.3s ease;
+}
+
+.mat-button-toggle:hover {
+  transform: scale(1.1);
+}
+
+.mat-button-toggle-group {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-toggle.mat-button-toggle-checked {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+#titulo {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#icone {
+  height: 150px;
+  margin-top: 10px;
+}
+
+#nome {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+}
