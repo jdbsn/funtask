@@ -1,0 +1,52 @@
+<mat-toolbar class="header" color="primary">
+  <span id="titulo">FunTask</span>
+</mat-toolbar>
+
+<mat-card>
+
+  <div class="table">
+
+    <mat-toolbar class="table-header" color="primary">
+      <span>Atividades Registradas</span>
+    </mat-toolbar>
+
+    <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
+
+      <!-- Coluna de Descrição -->
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let atividade"> {{atividade.descricao}} </td>
+      </ng-container>
+
+      <!-- Coluna de Nome -->
+      <ng-container matColumnDef="valorCredito">
+        <th mat-header-cell *matHeaderCellDef> Crédito </th>
+        <td mat-cell *matCellDef="let atividade"> {{atividade.valorCredito}} </td>
+      </ng-container>
+
+      <!-- Coluna de Crédito -->
+      <ng-container matColumnDef="valorDebito">
+        <th mat-header-cell *matHeaderCellDef> Débito </th>
+        <td mat-cell *matCellDef="let atividade"> {{atividade.valorDebito}} </td>
+      </ng-container>
+
+      <!-- Coluna de Débito -->
+      <ng-container matColumnDef="frequencia">
+        <th mat-header-cell *matHeaderCellDef> Frequência </th>
+        <td mat-cell *matCellDef="let atividade"> {{atividade.frequencia.valor}} </td>s
+      </ng-container>
+
+      <!-- Coluna imagem -->
+      <ng-container matColumnDef="crianca">
+        <th mat-header-cell *matHeaderCellDef> Criança </th>
+        <td mat-cell *matCellDef="let atividade"> <img [src]="atividade.crianca.foto" alt="Foto da Criança"> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </div>
+
+</mat-card>

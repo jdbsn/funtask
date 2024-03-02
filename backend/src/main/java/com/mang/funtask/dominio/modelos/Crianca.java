@@ -1,5 +1,6 @@
 package com.mang.funtask.dominio.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,6 +44,7 @@ public class Crianca implements Autenticavel {
   @JoinColumn(name = "id_responsavel", nullable = false)
   private Responsavel responsavel;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "crianca")
   private Set<Atividade> atividades;
 }
