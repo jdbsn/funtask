@@ -1,6 +1,6 @@
 package com.mang.funtask.controladores;
 
-import com.mang.funtask.dominio.dto.AtividadeDTO;
+import com.mang.funtask.dominio.dto.request.AtividadeDTO;
 import com.mang.funtask.servicos.AtividadeServico;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/responsavel/atividades")
+@RequestMapping("api/atividades")
 public class AtividadeController {
 
   private final AtividadeServico atividadeServico;
@@ -19,7 +19,7 @@ public class AtividadeController {
     this.atividadeServico = atividadeServico;
   }
 
-  @PostMapping
+  @PostMapping("/responsavel")
   public void criarAtividade(@RequestBody AtividadeDTO atividadeDTO) {
     this.atividadeServico.salvarAtividade(atividadeDTO);
   }
