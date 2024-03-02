@@ -1,0 +1,28 @@
+mat-card {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+mat-card-content {
+  margin: 1em;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+mat-form-field {
+  margin: 1%,
+}
+
+mat-card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.valores {
+  text-align: left;
+}
