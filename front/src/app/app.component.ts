@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,14 @@ export class AppComponent {
   logado = false;
   mostrarBarra = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private titleService: Title) {
     this.router.events.pipe(
       filter((event: any): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.mostrarBarra = event.url === '/';
       this.logado = event.url === '/responsavel';
     });
+    this.titleService.setTitle('FunTask');
   }
 
   onLogin() {

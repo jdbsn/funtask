@@ -12,7 +12,7 @@ import { Perfil } from '../modelo/perfil';
 })
 export class SeletorPerfilComponent {
 
-  private readonly FOTO_PADRAO = '../../../assets/user_icon.png';
+  private readonly FOTO_PADRAO = '../../../assets/user_icon_fundo_branco.png';
   listaPerfil$: Observable<Perfil[]>;
 
   constructor(public dialogo: MatDialog, private seletorPerfilServico: SeletorPerfilService) {

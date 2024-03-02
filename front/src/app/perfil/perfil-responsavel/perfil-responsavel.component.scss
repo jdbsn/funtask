@@ -18,3 +18,19 @@
   background-image: url('../../../assets/user_icon.png');
   background-size: cover;
 }
+
+#adicionar-crianca-icone {
+  height: 65px;
+  width: 65px;
+}
+
+#adicionar-crianca-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#adicionar-crianca-titulo {
+  margin-top: 10px;
+  font-weight: 450;
+}

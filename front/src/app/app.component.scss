@@ -10,6 +10,7 @@
 
 mat-toolbar {
   height: 75px;
+  background-image: linear-gradient(to bottom, #5DAFF3, #1C78D3);
   @include mat.elevation(2);
 }
 
