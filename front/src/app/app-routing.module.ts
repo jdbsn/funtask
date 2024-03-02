@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'selecionar-perfil',
     loadChildren: () => import('./seletor-perfil/seletor-perfil.module').then(m => m.SeletorPerfilModule)
+  },
+  {
+    path: 'responsavel',
+    loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilModule)
   }
 ];
 
