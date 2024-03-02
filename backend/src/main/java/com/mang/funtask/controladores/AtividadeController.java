@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/responsavel/atividades")
+@RequestMapping("api/responsavel/atividades")
 public class AtividadeController {
 
   private final AtividadeServico atividadeServico;
