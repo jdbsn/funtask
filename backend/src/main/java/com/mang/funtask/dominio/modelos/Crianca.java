@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Crianca {
+public class Crianca implements Autenticavel {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

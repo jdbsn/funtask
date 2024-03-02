@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Responsavel {
+public class Responsavel implements Autenticavel {
 
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
@@ -31,7 +31,7 @@ public class Responsavel {
   private String senha;
 
   @Column(nullable = false)
-  private String pin;
+  private int pin;
 
   @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<Crianca> criancas;
