@@ -1,4 +1,4 @@
-package com.mang.funtask.dominio.dto;
+package com.mang.funtask.dominio.dto.request;
 
 import java.util.UUID;
 

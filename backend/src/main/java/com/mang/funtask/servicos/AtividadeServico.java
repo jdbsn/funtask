@@ -1,6 +1,6 @@
 package com.mang.funtask.servicos;
 
-import com.mang.funtask.dominio.dto.AtividadeDTO;
+import com.mang.funtask.dominio.dto.request.AtividadeDTO;
 import com.mang.funtask.dominio.modelos.Atividade;
 import com.mang.funtask.repositorios.AtividadeRepositorio;
 import java.util.List;

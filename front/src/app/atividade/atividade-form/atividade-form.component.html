@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <h1 mat-dialog-title>Criar Atividade</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="atividadeForm">
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="ex: Arrumar o quarto" formControlName="descricao" required>
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>Valor Credito</mat-label>
+        <input matInput type="number" class="valores" placeholder="0.00" formControlName="valorCredito">
+        <span matTextPrefix>R$&nbsp;</span>
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>Valor Débito</mat-label>
+        <input matInput type="number" class="valores" placeholder="0.00" formControlName="valorDebito">
+        <span matTextPrefix>R$&nbsp;</span>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Frequência</mat-label>
+        <mat-select formControlName="frequencia">
+          <mat-option value="Diária">Diariamente</mat-option>
+          <mat-option value="Semanal">Semanalmente</mat-option>
+          <mat-option value="Mensal">Mensalmente</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Criança</mat-label>
+        <input matInput formControlName="criancaId">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-dialog-actions>
+      <button mat-raised-button color=primary mat-button (click)="emSalvar()">Criar</button>
+      <button mat-raised-button color=red mat-button (click)="emCancelar()">Cancelar</button>
+    </mat-dialog-actions>
+  </mat-card-footer>
+</mat-card>
