@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +10,34 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   title = 'front';
-  mostrarBarra = true;
+  logado = false;
+  mostrarBarra = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private titleService: Title) {
     this.router.events.pipe(
       filter((event: any): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.mostrarBarra = event.url === '/';
+      this.logado = event.url === '/responsavel';
     });
+    this.titleService.setTitle('FunTask');
   }
 
   onLogin() {
-    this.router.navigate(['selecionar-perfil'])
+    this.router.navigate(['selecionar-perfil']);
   }
 
   onCadastro() {
-    this.router.navigate(['selecionar-perfil'])
+    this.router.navigate(['selecionar-perfil']);
+  }
+
+  onTrocarPerfil() {
+    localStorage.setItem('autenticado', 'false');
+    this.router.navigate(['selecionar-perfil']);
+  }
+
+  onLogout() {
+    this.router.navigate(['']);
   }
 
 }

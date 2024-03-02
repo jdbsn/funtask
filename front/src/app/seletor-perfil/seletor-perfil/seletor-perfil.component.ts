@@ -12,7 +12,7 @@ import { Perfil } from '../modelo/perfil';
 })
 export class SeletorPerfilComponent {
 
-  private readonly FOTO_PADRAO = '../../../assets/user_icon.png';
+  private readonly FOTO_PADRAO = '../../../assets/user_icon_fundo_branco.png';
   listaPerfil$: Observable<Perfil[]>;
 
   constructor(public dialogo: MatDialog, private seletorPerfilServico: SeletorPerfilService) {
@@ -25,9 +25,12 @@ export class SeletorPerfilComponent {
       );
   }
 
-  onSelecionado(id: string, animacaoAbrir: string, animacaoFechar: string) {
+  onSelecionado(id: string, responsavel: boolean, animacaoAbrir: string, animacaoFechar: string) {
     this.dialogo.open(DialogoPinComponent, {
-      data: id,
+      data: {
+        id,
+        responsavel
+      },
       enterAnimationDuration: animacaoAbrir,
       exitAnimationDuration: animacaoFechar
     });

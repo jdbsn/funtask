@@ -16,7 +16,10 @@ export class DialogoPinComponent {
   msgErro: string;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: string,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      id: string,
+      responsavel: boolean
+    },
     private formBuilder: FormBuilder,
     private seletorPerfilService: SeletorPerfilService,
     private router: Router,
@@ -30,16 +33,22 @@ export class DialogoPinComponent {
 
   onEnviar() {
     this.seletorPerfilService
-      .autenticarPin(this.data, this.form.value.pin)
+      .autenticarPin(this.data.id, this.form.value.pin, this.data.responsavel)
       .subscribe(
         {
           next: () => {
             this.dialogRef.close();
-            this.router.navigate([''])
+
+            if(this.data.responsavel) {
+              this.router.navigate(['responsavel'])
+            } else {
+              this.router.navigate([''])
+            }
+
           },
           error: (erro) => {
             this.msgErro = erro.error;
-            }
+          }
         }
       );
   }

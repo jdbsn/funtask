@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+
+.card-opcao {
+  max-width: 80%;
+  margin: 2em auto;
+  @include mat.elevation(4);
+}
+
+.card-crianca {
+  display: flex;
+  min-width: 200px;
+  margin-right: 20px;
+  margin-top: 15px;
+  @include mat.elevation(2);
+}
+
+.icone {
+  background-image: url('../../../assets/user_icon.png');
+  background-size: cover;
+}
+
+#adicionar-crianca-icone {
+  height: 65px;
+  width: 65px;
+}
+
+#adicionar-crianca-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#adicionar-crianca-titulo {
+  margin-top: 10px;
+  font-weight: 450;
+}
