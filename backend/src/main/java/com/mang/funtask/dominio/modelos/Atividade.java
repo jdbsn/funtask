@@ -1,6 +1,6 @@
 package com.mang.funtask.dominio.modelos;
 
-import com.mang.funtask.dominio.dto.AtividadeDTO;
+import com.mang.funtask.dominio.dto.request.AtividadeDTO;
 import com.mang.funtask.dominio.enums.Frequencia;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

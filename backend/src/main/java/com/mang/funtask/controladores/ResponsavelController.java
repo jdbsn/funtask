@@ -1,6 +1,6 @@
 package com.mang.funtask.controladores;
 
-import com.mang.funtask.dominio.dto.PerfisDTO;
+import com.mang.funtask.dominio.dto.response.PerfisDTO;
 import com.mang.funtask.servicos.ResponsavelServico;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

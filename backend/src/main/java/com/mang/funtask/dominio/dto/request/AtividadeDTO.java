@@ -1,4 +1,4 @@
-package com.mang.funtask.dominio.dto;
+package com.mang.funtask.dominio.dto.request;
 
 import com.mang.funtask.dominio.enums.Frequencia;
 import com.mang.funtask.dominio.modelos.Atividade;
@@ -11,5 +11,4 @@ public record AtividadeDTO(String descricao, Double valorCredito, Double valorDe
     this(atividade.getDescricao(), atividade.getValorCredito(), atividade.getValorDebito(),
         atividade.getFrequencia(), atividade.getCrianca());
   }
-
 }
