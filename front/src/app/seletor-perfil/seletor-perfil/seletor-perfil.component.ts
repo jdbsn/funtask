@@ -25,9 +25,12 @@ export class SeletorPerfilComponent {
       );
   }
 
-  onSelecionado(id: string, animacaoAbrir: string, animacaoFechar: string) {
+  onSelecionado(id: string, responsavel: boolean, animacaoAbrir: string, animacaoFechar: string) {
     this.dialogo.open(DialogoPinComponent, {
-      data: id,
+      data: {
+        id,
+        responsavel
+      },
       enterAnimationDuration: animacaoAbrir,
       exitAnimationDuration: animacaoFechar
     });
