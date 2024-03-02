@@ -8,19 +8,35 @@ import { Observable, first, tap } from 'rxjs';
 })
 export class SeletorPerfilService {
 
-  constructor(private httpClient: HttpClient) {
+  private readonly AUTENTICADO = 'autenticado';
 
+  autenticado: boolean = false;
+
+  constructor(private httpClient: HttpClient) {
+    this.autenticado = localStorage.getItem(this.AUTENTICADO) === 'true';
   }
 
   listarPerfis() : Observable<Perfil[]> {
     return this.httpClient.get<Perfil[]>('api/listar-perfis')
       .pipe(
-        first(),
-        tap(perfil => console.log(perfil)));
+        first()
+      );
   }
 
-  autenticarPin(id: String, pin: Number) {
-      return this.httpClient.post('api/autenticarPin', {id: id, pin: pin});
-    }
+  autenticarPin(id: String, pin: Number, responsavel: boolean) {
+    return this.httpClient.post('api/autenticarPin', {id: id, pin: pin})
+      .pipe(
+        tap(() => {
+          if(responsavel) {
+            this.autenticado = true;
+            localStorage.setItem(this.AUTENTICADO, 'true');
+          }
+        })
+      );
+  }
+
+  estaAutenticado(): boolean {
+    return this.autenticado;
+  }
 
 }

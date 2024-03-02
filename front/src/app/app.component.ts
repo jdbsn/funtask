@@ -30,6 +30,7 @@ export class AppComponent {
   }
 
   onTrocarPerfil() {
+    localStorage.setItem('autenticado', 'false');
     this.router.navigate(['selecionar-perfil']);
   }
 

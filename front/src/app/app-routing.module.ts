@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ResponsavelGuard } from './guard/responsavel.guard';
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'responsavel',
+    canActivate: [ResponsavelGuard],
     loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilModule)
   }
 ];

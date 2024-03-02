@@ -33,7 +33,7 @@ export class DialogoPinComponent {
 
   onEnviar() {
     this.seletorPerfilService
-      .autenticarPin(this.data.id, this.form.value.pin)
+      .autenticarPin(this.data.id, this.form.value.pin, this.data.responsavel)
       .subscribe(
         {
           next: () => {
@@ -48,7 +48,7 @@ export class DialogoPinComponent {
           },
           error: (erro) => {
             this.msgErro = erro.error;
-            }
+          }
         }
       );
   }
