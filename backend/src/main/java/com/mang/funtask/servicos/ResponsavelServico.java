@@ -32,13 +32,13 @@ public class ResponsavelServico {
 
         if(responsavel.isPresent()) {
             Responsavel responsavel1 = responsavel.get();
-            perfis.add(new PerfisDTO(responsavel1.getId(), responsavel1.getNome(), null));
+            perfis.add(new PerfisDTO(responsavel1.getId(), responsavel1.getNome(), null, true));
         }
         if(criancas.isPresent()) {
             List<Crianca> criancas1 = criancas.get();
 
             criancas1.forEach(c ->
-                perfis.add(new PerfisDTO(c.getId(), c.getNome(), Base64.encodeBase64String(c.getFoto())))
+                perfis.add(new PerfisDTO(c.getId(), c.getNome(), Base64.encodeBase64String(c.getFoto()), false))
             );
         }
 
