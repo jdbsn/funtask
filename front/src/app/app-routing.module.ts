@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./seletor-perfil/seletor-perfil.module').then(m => m.SeletorPerfilModule)
   },
   {
+    path: 'responsavel-atividades',
+    loadChildren: () => import('./atividades-responsavel/atividades-responsavel.module').then(m => m.AtividadesResponsavelModule)
+  },
+  {
     path: 'responsavel',
     canActivate: [ResponsavelGuard],
     loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilModule)

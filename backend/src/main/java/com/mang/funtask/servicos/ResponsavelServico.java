@@ -1,6 +1,6 @@
 package com.mang.funtask.servicos;
 
-import com.mang.funtask.dominio.dto.PerfisDTO;
+import com.mang.funtask.dominio.dto.response.PerfisDTO;
 import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Responsavel;
 import com.mang.funtask.repositorios.ResponsavelRepositorio;

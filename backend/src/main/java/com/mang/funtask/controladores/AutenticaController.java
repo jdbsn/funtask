@@ -1,6 +1,6 @@
 package com.mang.funtask.controladores;
 
-import com.mang.funtask.dominio.dto.AcessoPerfilDTO;
+import com.mang.funtask.dominio.dto.request.AcessoPerfilDTO;
 import com.mang.funtask.dominio.modelos.Autenticavel;
 import com.mang.funtask.servicos.AutenticaServico;
 import lombok.AllArgsConstructor;
