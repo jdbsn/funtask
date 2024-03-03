@@ -1,6 +1,7 @@
 package com.mang.funtask.dominio.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mang.funtask.dominio.dto.request.CriancaDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,4 +48,13 @@ public class Crianca implements Autenticavel {
   @JsonIgnore
   @OneToMany(mappedBy = "crianca")
   private Set<Atividade> atividades;
+
+  public Crianca(CriancaDTO dto, Responsavel responsavel) {
+    this.nome = dto.nome();
+    this.conta = new Conta(this);
+    this.foto = dto.foto();
+    this.pin = Integer.parseInt(dto.pin());
+    this.responsavel = responsavel;
+  }
+
 }

@@ -11,11 +11,10 @@ export class AtividadesService {
   constructor(private httpClient: HttpClient) { }
 
   listarAtividades(): Observable<Atividade[]> {
-    return this.httpClient.get<Atividade[]>('api/atividades/responsavel')
+    return this.httpClient.get<Atividade[]>('api/atividades')
     .pipe(
       first(),
       tap(atividade => console.log(atividade))
     );
-
   }
 }

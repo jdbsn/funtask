@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -26,4 +25,10 @@ public class Conta {
 
   @OneToOne(mappedBy = "conta")
   private Crianca crianca;
+
+  public Conta(Crianca crianca) {
+    this.saldo = 0.0;
+    this.crianca = crianca;
+  }
+
 }
