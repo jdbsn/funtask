@@ -1,7 +1,7 @@
 package com.mang.funtask.controladores;
 
 import com.mang.funtask.dominio.dto.response.PerfisDTO;
-import com.mang.funtask.servicos.ResponsavelServico;
+import com.mang.funtask.servicos.FunTaskServico;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +16,11 @@ import java.util.UUID;
 public class ResponsavelController {
 
     private static final UUID ID_RESPONSAVEL = UUID.fromString("8fa13d0e-6905-455e-9001-a27ca60790f6");
-    private ResponsavelServico responsavelServico;
+    private FunTaskServico funTaskServico;
 
     @GetMapping("/api/listar-perfis")
     public ResponseEntity<List<PerfisDTO>> listarPerfis() {
-        List<PerfisDTO> perfis = responsavelServico.encontrarPerfis(ID_RESPONSAVEL);
+        List<PerfisDTO> perfis = funTaskServico.encontrarPerfis(ID_RESPONSAVEL);
 
         if(perfis.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
