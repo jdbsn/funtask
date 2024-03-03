@@ -9,8 +9,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,24 +28,23 @@ public class Atividade {
   private String descricao;
 
   @Column(name = "valor_credito", nullable = false)
-  private Double valorCredito;
+  private double valorCredito;
 
   @Column(name = "valor_debito", nullable = false)
-  private Double valorDebito;
+  private double valorDebito;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private Frequencia frequencia;
 
-  @ManyToOne
-  @JoinColumn(name = "id_crianca", nullable = false)
-  private Crianca crianca;
+  @Column(name = "id_crianca", nullable = false)
+  private UUID idCrianca;
 
   public Atividade(AtividadeDTO atividadeDTO) {
     this.descricao = atividadeDTO.descricao();
     this.valorCredito = atividadeDTO.valorCredito();
     this.valorDebito = atividadeDTO.valorDebito();
     this.frequencia = atividadeDTO.frequencia();
-    this.crianca = atividadeDTO.crianca();
+    this.idCrianca = atividadeDTO.idCrianca();
   }
 }

@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum TipoTransacao {
   DEBITO("Debito"),
-  CREDITO("Credito");
+  CREDITO("Credito"),
+  MESADA("Mesada");
 
   private final String valor;
 

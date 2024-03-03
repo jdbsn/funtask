@@ -5,9 +5,11 @@ import com.mang.funtask.dominio.dto.response.PerfisDTO;
 import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Responsavel;
 import com.mang.funtask.repositorios.CriancaRepositorio;
-
-import java.util.*;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
@@ -22,19 +24,20 @@ public class CriancaServico {
 
   public Map<String, String> adicionarCrianca(CriancaDTO dto) {
     Map<String, String> mensagens = new HashMap<>();
-    Optional<Responsavel> responsavel = responsavelServico.encontrarResponsavel(dto.idResponsavel());
+    Optional<Responsavel> responsavel = responsavelServico.encontrarResponsavel(
+        dto.idResponsavel());
 
-    if(responsavel.isEmpty()) {
+    if (responsavel.isEmpty()) {
       mensagens.put("responsavel", "Responsável não encontrado.");
     }
 
     mensagens.putAll(validadorServico.validaCrianca(dto));
 
-    if(!mensagens.isEmpty()) {
+    if (!mensagens.isEmpty()) {
       return mensagens;
     }
 
-    Crianca crianca = new Crianca(dto, responsavel.get());
+    Crianca crianca = new Crianca(dto, dto.idResponsavel());
     criancaRepo.save(crianca);
 
     return mensagens;
@@ -48,6 +51,7 @@ public class CriancaServico {
     return criancaRepo.encontrarPorIdResponsavel(idResponsavel);
   }
 
+
   public List<PerfisDTO> listarCriancasPorResponsavel(UUID idResponsavel) {
     Optional<List<Crianca>> criancas = criancaRepo.encontrarPorIdResponsavel(idResponsavel);
 
@@ -60,6 +64,11 @@ public class CriancaServico {
             Base64.encodeBase64String(crianca.getFoto()), false)));
 
     return perfis;
+  }
+
+
+  public void atualizarCrianca(Crianca crianca) {
+    this.criancaRepo.save(crianca);
   }
 
 }

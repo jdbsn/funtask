@@ -4,7 +4,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-
 import java.util.UUID;
 
 public record CriancaDTO(@NotEmpty(message = "Informe um nome válido.")
@@ -17,4 +16,5 @@ public record CriancaDTO(@NotEmpty(message = "Informe um nome válido.")
                          @Min(value = 0, message = "Informe uma mesada válida.")
                          double valorMesada,
                          UUID idResponsavel) {
+
 }

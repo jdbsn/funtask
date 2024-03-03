@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.util.Set;
@@ -44,21 +43,19 @@ public class Crianca implements Autenticavel {
   @Column(name = "valor_mesada", nullable = false)
   private double valorMesada;
 
-  @ManyToOne
-  @JoinColumn(name = "id_responsavel", nullable = false)
-  private Responsavel responsavel;
+  @Column(name = "id_responsavel", nullable = false)
+  private UUID idResponsavel;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "crianca")
+  @OneToMany(mappedBy = "idCrianca")
   private Set<Atividade> atividades;
 
-  public Crianca(CriancaDTO dto, Responsavel responsavel) {
-    this.nome = dto.nome();
-    this.conta = new Conta(this);
-    this.foto = dto.foto();
-    this.pin = Integer.parseInt(dto.pin());
-    this.valorMesada = dto.valorMesada();
-    this.responsavel = responsavel;
+  public Crianca(CriancaDTO criancaDTO, UUID responsavel) {
+    this.nome = criancaDTO.nome();
+    this.conta = new Conta(this.id);
+    this.foto = criancaDTO.foto();
+    this.pin = Integer.parseInt(criancaDTO.pin());
+    this.valorMesada = criancaDTO.valorMesada();
+    this.idResponsavel = responsavel;
   }
-
 }

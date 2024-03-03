@@ -16,6 +16,5 @@ export class AtividadesService {
       first(),
       tap(atividade => console.log(atividade))
     );
-
   }
 }
