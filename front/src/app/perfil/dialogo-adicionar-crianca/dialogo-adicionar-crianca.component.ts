@@ -1,6 +1,6 @@
 import { ResponsavelService } from './../servico/responsavel.service';
 import { Component, Inject } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogoAdicionarCriancaComponent {
 
-  msgErro: string;
+  msgErro: any;
   form: FormGroup;
   nomeFotoSelecionado: string | null = null;
 
@@ -21,10 +21,9 @@ export class DialogoAdicionarCriancaComponent {
       this.form = this.formBuilder.group({
         nome: [null],
         pin: [null],
-        mesada: [null],
+        mesada: [null, [Validators.required, Validators.min(0)]],
         foto: [null]
       });
-      this.msgErro = '';
   }
 
   onAdicionar() {
@@ -40,6 +39,7 @@ export class DialogoAdicionarCriancaComponent {
         },
         error: (erro) => {
           this.msgErro = erro.error;
+          console.log(erro)
         }
       });
 
