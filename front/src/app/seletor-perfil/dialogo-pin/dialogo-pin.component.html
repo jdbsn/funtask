@@ -3,7 +3,7 @@
   <form [formGroup]="form">
     <mat-form-field appearance="fill">
       <mat-label>PIN</mat-label>
-      <input matInput type="password" formControlName="pin">
+      <input matInput type="password" formControlName="pin" mask="0000">
     </mat-form-field>
   </form>
   <p *ngIf="msgErro" id="errorMsg">{{ msgErro }}</p>

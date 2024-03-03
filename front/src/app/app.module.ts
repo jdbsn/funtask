@@ -1,13 +1,16 @@
+import '@angular/compiler';
+
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import '@angular/compiler'
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import '@angular/compiler'
     MatToolbarModule,
     MatButtonModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -2,7 +2,7 @@ import { SeletorPerfilService } from './../servico/seletor-perfil.service';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoPinComponent } from '../dialogo-pin/dialogo-pin.component';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Perfil } from '../modelo/perfil';
 
 @Component({
@@ -20,8 +20,11 @@ export class SeletorPerfilComponent {
       .pipe(
         map(perfis => perfis.map(perfil => ({
           ...perfil,
-          foto: perfil.foto || this.FOTO_PADRAO
-        })))
+          foto: perfil.foto ? 'data:image/jpeg;base64,' + perfil.foto : this.FOTO_PADRAO
+        }))),
+        tap(m => {
+          console.log(m);
+        })
       );
   }
 

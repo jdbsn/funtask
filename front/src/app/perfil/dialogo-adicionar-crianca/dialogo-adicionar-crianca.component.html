@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Adicionar criança</h1>
+<mat-dialog-content>
+  <form [formGroup]="form" class="adicionar-crianca-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome">
+      <mat-hint *ngIf="msgErro" class="errorMsg">{{ msgErro.nome }}</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline" >
+      <mat-label>PIN</mat-label>
+      <input matInput formControlName="pin" mask="0000">
+      <mat-hint *ngIf="msgErro"class="errorMsg">{{ msgErro.pin }}</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mesada</mat-label>
+      <input matInput formControlName="mesada" mask="0*.00">
+      <mat-hint *ngIf="msgErro" class="errorMsg">{{ msgErro.valorMesada }}</mat-hint>
+    </mat-form-field>
+
+    <button type="button" mat-raised-button (click)="fileInput.click()" class="selecionar-foto-botao">
+      {{ nomeFotoSelecionado ? 'Alterar foto: ' + nomeFotoSelecionado : 'Escolher foto' }}
+    </button>
+    <input hidden (change)="onArquivoFoto($event)" #fileInput type="file" id="file">
+
+  </form>
+  <mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" (click)="onAdicionar()">Adicionar</button>
+    <button mat-stroked-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+</mat-dialog-content>
