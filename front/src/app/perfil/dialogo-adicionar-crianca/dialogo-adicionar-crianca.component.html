@@ -1,1 +1,31 @@
-<p>dialogo-adicionar-crianca works!</p>
+<h1 mat-dialog-title>Adicionar criança</h1>
+<mat-dialog-content>
+  <form [formGroup]="form" class="adicionar-crianca-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline" >
+      <mat-label>Pin</mat-label>
+      <input matInput>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mesada</mat-label>
+      <input matInput>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <button type="button" mat-raised-button (click)="fileInput.click()" class="selecionar-foto-botao">
+      {{ nomeFotoSelecionado ? 'Alterar foto: ' + nomeFotoSelecionado : 'Escolher foto' }}
+    </button>
+    <input hidden (change)="onArquivoFoto($event)" #fileInput type="file" id="file">
+
+  </form>
+  <p *ngIf="msgErro" id="errorMsg">{{ msgErro }}</p>
+  <mat-dialog-actions align="center">
+    <button mat-raised-button color="primary">Adicionar</button>
+    <button mat-stroked-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

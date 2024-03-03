@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
-
-import { MatCardModule } from '@angular/material/card';
-import { PerfilRoutingModel } from './perfil-routing.module';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+
 import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/dialogo-adicionar-crianca.component';
+import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
+import { PerfilRoutingModel } from './perfil-routing.module';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/di
     CommonModule,
     MatCardModule,
     PerfilRoutingModel,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatGridListModule
   ]
 })
 export class PerfilModule { }
