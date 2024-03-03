@@ -5,9 +5,7 @@ import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Responsavel;
 import com.mang.funtask.repositorios.CriancaRepositorio;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,18 +16,26 @@ public class CriancaServico {
 
   private ResponsavelServico responsavelServico;
   private CriancaRepositorio criancaRepo;
+  private ValidadorServico validadorServico;
 
-  public boolean adicionarCrianca(CriancaDTO dto) {
+  public Map<String, String> adicionarCrianca(CriancaDTO dto) {
+    Map<String, String> mensagens = new HashMap<>();
     Optional<Responsavel> responsavel = responsavelServico.encontrarResponsavel(dto.idResponsavel());
 
     if(responsavel.isEmpty()) {
-      return false;
+      mensagens.put("responsavel", "Responsável não encontrado.");
+    }
+
+    mensagens.putAll(validadorServico.validaCrianca(dto));
+
+    if(!mensagens.isEmpty()) {
+      return mensagens;
     }
 
     Crianca crianca = new Crianca(dto, responsavel.get());
     criancaRepo.save(crianca);
 
-    return true;
+    return mensagens;
   }
 
   public Optional<Crianca> encontrarCrianca(UUID id) {

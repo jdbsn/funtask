@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/crianca")
 @AllArgsConstructor
@@ -18,11 +20,11 @@ public class CriancaController {
     private CriancaServico criancaServico;
 
     @PostMapping
-    public ResponseEntity<String> adicionarCrianca(@RequestBody CriancaDTO crianca) {
-        boolean feito = criancaServico.adicionarCrianca(crianca);
+    public ResponseEntity<Map<String, String>> adicionarCrianca(@RequestBody CriancaDTO crianca) {
+        Map<String, String> mensagens = criancaServico.adicionarCrianca(crianca);
 
-        if(!feito) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cadastro não foi feito.");
+        if(!mensagens.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagens);
         }
 
         return ResponseEntity.status(HttpStatus.OK).build();

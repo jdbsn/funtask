@@ -53,7 +53,7 @@ public class Crianca implements Autenticavel {
     this.nome = dto.nome();
     this.conta = new Conta(this);
     this.foto = dto.foto();
-    this.pin = dto.pin();
+    this.pin = Integer.parseInt(dto.pin());
     this.responsavel = responsavel;
   }
 
