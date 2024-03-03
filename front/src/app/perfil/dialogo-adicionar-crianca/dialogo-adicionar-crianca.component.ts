@@ -31,7 +31,7 @@ export class DialogoAdicionarCriancaComponent {
     var mesada = this.form.value.mesada;
     var nome = this.form.value.nome;
     var pin = this.form.value.pin;
-    var foto = this.form.value.pin;
+    var foto = this.form.value.foto;
 
     this.responsavelService.adicionarCrianca(nome, mesada, pin, foto).subscribe(
       {

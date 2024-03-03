@@ -12,7 +12,10 @@
 <mat-toolbar color="primary" id="nav-logado" *ngIf="logado">
   <span id="titulo">FunTask</span>
   <span class="espacador"></span>
-  <button mat-button style="color: white" [matMenuTriggerFor]="menu">Helaine Barreiros</button>
+  <button mat-fab extended [matMenuTriggerFor]="menu" id="botao-opcoes">
+    <mat-icon svgIcon="perfil"></mat-icon>
+    Helaine Barreiros
+  </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="onTrocarPerfil()">Trocar de perfil</button>
     <button mat-menu-item>Meus dados</button>

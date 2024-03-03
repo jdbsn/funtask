@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DialogoPinComponent } from './dialogo-pin/dialogo-pin.component';
 import { SeletorPerfilRoutingModule } from './seletor-perfil-routing.module';
 import { SeletorPerfilComponent } from './seletor-perfil/seletor-perfil.component';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
   @NgModule({
     declarations: [
@@ -24,7 +25,9 @@ import { SeletorPerfilComponent } from './seletor-perfil/seletor-perfil.componen
       MatDialogModule,
       MatButtonModule,
       MatInputModule,
-      ReactiveFormsModule
-    ]
+      ReactiveFormsModule,
+      NgxMaskDirective
+    ],
+    providers: [provideNgxMask()]
   })
   export class SeletorPerfilModule { }
