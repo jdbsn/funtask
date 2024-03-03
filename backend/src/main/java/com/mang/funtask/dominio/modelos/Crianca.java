@@ -41,6 +41,9 @@ public class Crianca implements Autenticavel {
   @Column(nullable = false)
   private int pin;
 
+  @Column(name = "valor_mesada", nullable = false)
+  private double valorMesada;
+
   @ManyToOne
   @JoinColumn(name = "id_responsavel", nullable = false)
   private Responsavel responsavel;

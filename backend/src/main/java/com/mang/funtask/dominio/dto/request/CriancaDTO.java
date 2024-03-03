@@ -1,5 +1,6 @@
 package com.mang.funtask.dominio.dto.request;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 
@@ -10,5 +11,7 @@ public record CriancaDTO(@NotEmpty(message = "Nome inválido.")
                          byte[] foto,
                          @Pattern(regexp = "^(?!0000)\\d{4}$", message = "Informe um pin com 4 dígitos.")
                          String pin,
+                         @Min(value = 0, message = "O valor da mesada deve ser 0 ou mais.")
+                         double valorMesada,
                          UUID idResponsavel) {
 }
