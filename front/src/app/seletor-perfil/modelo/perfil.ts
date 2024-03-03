@@ -1,5 +1,6 @@
 export interface Perfil {
   id: string,
   nome: string,
-  foto: string
+  foto: string,
+  responsavel: boolean
 }

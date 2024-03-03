@@ -1,17 +1,19 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title id="titulo">Selecione um perfil</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup">
-      <ng-container *ngIf="(listaPerfil$ | async) as perfis">
-        <mat-button-toggle *ngFor="let perfil of perfis" class="custom-toggle" [disableRipple]="true" (click)="onSelecionado(perfil.id, '300ms', '300ms')">
-          <img [src]="perfil.foto" id="icone" />
-          <p id="nome">
-            {{ perfil.nome }}
-          </p>
-        </mat-button-toggle>
-      </ng-container>
-    </mat-button-toggle-group>
-  </mat-card-content>
-</mat-card>
+<body>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title id="titulo">Selecione um perfil</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup">
+        <ng-container *ngIf="(listaPerfil$ | async) as perfis">
+          <mat-button-toggle *ngFor="let perfil of perfis" class="custom-toggle" [disableRipple]="true" (click)="onSelecionado(perfil.id, perfil.responsavel, '300ms', '300ms')">
+            <img [src]="perfil.foto" id="icone" />
+            <p id="nome">
+              {{ perfil.nome }}
+            </p>
+          </mat-button-toggle>
+        </ng-container>
+      </mat-button-toggle-group>
+    </mat-card-content>
+  </mat-card>
+</body>
