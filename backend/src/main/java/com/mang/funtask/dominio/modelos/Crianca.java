@@ -32,7 +32,7 @@ public class Crianca implements Autenticavel {
   private String nome;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "id_conta", referencedColumnName = "id_conta")
+  @JoinColumn(name = "id_crianca", referencedColumnName = "id")
   private Conta conta;
 
   private byte[] foto;

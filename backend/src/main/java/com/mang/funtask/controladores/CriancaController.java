@@ -29,6 +29,9 @@ public class CriancaController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagens);
     }
 
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
+
   @GetMapping
   public ResponseEntity<List<PerfisDTO>> listarCriancas() {
     List<PerfisDTO> criancas = criancaServico.listarCriancasPorResponsavel(ID_RESPONSAVEL);
