@@ -5,10 +5,12 @@ import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsa
 import { MatCardModule } from '@angular/material/card';
 import { PerfilRoutingModel } from './perfil-routing.module';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/dialogo-adicionar-crianca.component';
 
 @NgModule({
   declarations: [
-    PerfilResponsavelComponent
+    PerfilResponsavelComponent,
+    DialogoAdicionarCriancaComponent
   ],
   imports: [
     CommonModule,

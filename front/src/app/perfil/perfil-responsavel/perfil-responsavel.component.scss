@@ -19,6 +19,11 @@
   background-size: cover;
 }
 
+#adiciona:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 #adicionar-crianca-icone {
   height: 65px;
   width: 65px;
