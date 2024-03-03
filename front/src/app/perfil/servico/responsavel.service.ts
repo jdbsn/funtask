@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Crianca } from '../../atividades-responsavel/modelo/crianca';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,10 @@ import { Injectable } from '@angular/core';
 export class ResponsavelService {
 
   constructor(private httpClient: HttpClient) { }
+
+  listarPerfisCriancas(idResponsavel: string) {
+    return this.httpClient.get<Crianca[]>('api/crianca');
+  }
 
   adicionarCrianca(nome: string, valorMesada: number, pin: number, foto: number[]) {
     if(valorMesada == null) {

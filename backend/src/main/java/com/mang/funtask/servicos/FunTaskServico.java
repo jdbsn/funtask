@@ -23,7 +23,7 @@ public class FunTaskServico {
         List<PerfisDTO> perfis = new ArrayList<>();
 
         Optional<Responsavel> responsavel = responsavelServico.encontrarResponsavel(idResponsavel);
-        Optional<List<Crianca>> criancas = criancaServico.encontrarCriancaPorResponsavel(idResponsavel);
+        Optional<List<Crianca>> criancas = criancaServico.encontrarCriancasPorResponsavel(idResponsavel);
 
         if(responsavel.isPresent()) {
             Responsavel responsavel1 = responsavel.get();
