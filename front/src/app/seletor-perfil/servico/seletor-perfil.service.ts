@@ -9,6 +9,7 @@ import { Observable, first, tap } from 'rxjs';
 export class SeletorPerfilService {
 
   private readonly AUTENTICADO = 'autenticado';
+  private readonly ID_RESPONSAVEL = 'id_responsavel';
 
   autenticado: boolean = false;
 
@@ -30,6 +31,7 @@ export class SeletorPerfilService {
           if(responsavel) {
             this.autenticado = true;
             localStorage.setItem(this.AUTENTICADO, 'true');
+            localStorage.setItem(this.ID_RESPONSAVEL, '' + id);
           }
         })
       );

@@ -1,6 +1,7 @@
+import { ResponsavelService } from './../servico/responsavel.service';
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialogo-adicionar-crianca',
@@ -13,11 +14,35 @@ export class DialogoAdicionarCriancaComponent {
   form: FormGroup;
   nomeFotoSelecionado: string | null = null;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string, private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      pin: [null]
-    });
-    this.msgErro = '';
+  constructor(@Inject(MAT_DIALOG_DATA) public data: string,
+    private formBuilder: FormBuilder,
+    private responsavelService: ResponsavelService,
+    private dialogRef: MatDialogRef<DialogoAdicionarCriancaComponent>) {
+      this.form = this.formBuilder.group({
+        nome: [null],
+        pin: [null],
+        mesada: [null],
+        foto: [null]
+      });
+      this.msgErro = '';
+  }
+
+  onAdicionar() {
+    var mesada = this.form.value.mesada;
+    var nome = this.form.value.nome;
+    var pin = this.form.value.pin;
+    var foto = this.form.value.pin;
+
+    this.responsavelService.adicionarCrianca(nome, mesada, pin, foto).subscribe(
+      {
+        next: () => {
+          this.dialogRef.close();
+        },
+        error: (erro) => {
+          this.msgErro = erro.error;
+        }
+      });
+
   }
 
   onArquivoFoto(event: any) {
@@ -33,7 +58,7 @@ export class DialogoAdicionarCriancaComponent {
           const byteArray = new Uint8Array(fileContentArrayBuffer);
 
           this.form.patchValue({
-            arquivo: Array.from(byteArray),
+            foto: Array.from(byteArray),
           });
 
           this.nomeFotoSelecionado = foto.name;
