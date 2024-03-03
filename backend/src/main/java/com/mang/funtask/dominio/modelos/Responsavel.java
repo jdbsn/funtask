@@ -33,6 +33,6 @@ public class Responsavel implements Autenticavel {
   @Column(nullable = false)
   private int pin;
 
-  @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy = "idResponsavel", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<Crianca> criancas;
 }

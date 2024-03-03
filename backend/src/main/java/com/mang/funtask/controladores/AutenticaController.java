@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class AutenticaController {
 
-    private AutenticaServico autenticaServico;
+  private AutenticaServico autenticaServico;
 
-    @PostMapping
-    public ResponseEntity<String> autenticar(@RequestBody AcessoPerfilDTO dto) {
-        Autenticavel perfil = autenticaServico.encontrarPerfil(dto.id());
+  @PostMapping
+  public ResponseEntity<String> autenticar(@RequestBody AcessoPerfilDTO dto) {
+    Autenticavel perfil = autenticaServico.encontrarPerfil(dto.id());
 
-        if(perfil == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Perfil não encontrado.");
-        }
-
-        if(!autenticaServico.autorizarAcesso(perfil, dto.pin())) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("PIN incorreto.");
-        }
-
-        return ResponseEntity.status(HttpStatus.OK).build();
+    if (perfil == null) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+          .body("Perfil não encontrado.");
     }
+
+    if (!autenticaServico.autorizarAcesso(perfil, dto.pin())) {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+          .body("PIN incorreto.");
+    }
+
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
 
 }
