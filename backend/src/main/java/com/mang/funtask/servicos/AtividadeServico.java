@@ -4,6 +4,8 @@ import com.mang.funtask.dominio.dto.request.AtividadeDTO;
 import com.mang.funtask.dominio.modelos.Atividade;
 import com.mang.funtask.repositorios.AtividadeRepositorio;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,6 +23,10 @@ public class AtividadeServico {
     return atividades.stream()
         .map(AtividadeDTO::new)
         .toList();
+  }
+
+  public Optional<Atividade> encontrarAtividadePorID(UUID id) {
+    return atividadeRepositorio.findById(id);
   }
 
   public void salvarAtividade(AtividadeDTO atividadeDTO) {
