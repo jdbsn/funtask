@@ -11,7 +11,7 @@ export class AtividadesService {
   constructor(private httpClient: HttpClient) { }
 
   listarAtividades(): Observable<Atividade[]> {
-    return this.httpClient.get<Atividade[]>('api/responsavel/atividades')
+    return this.httpClient.get<Atividade[]>('api/atividades/responsavel')
     .pipe(
       first(),
       tap(atividade => console.log(atividade))

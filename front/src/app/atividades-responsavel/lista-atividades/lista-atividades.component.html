@@ -8,6 +8,10 @@
 
     <mat-toolbar class="table-header" color="primary">
       <span>Atividades Registradas</span>
+      <span class="espacador"></span>
+      <button mat-mini-fab aria-disabled="Adicionar Atividade" (click)="criarAtividade()">
+      <mat-icon>add</mat-icon>
+      </button>
     </mat-toolbar>
 
     <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
