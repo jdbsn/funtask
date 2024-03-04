@@ -53,7 +53,6 @@ public class CriancaServico {
     return criancaRepo.encontrarPorIdResponsavel(idResponsavel);
   }
 
-
   public List<PerfisDTO> listarCriancasPorResponsavel(UUID idResponsavel) {
     Optional<List<Crianca>> criancas = criancaRepo.encontrarPorIdResponsavel(idResponsavel);
 
@@ -67,7 +66,6 @@ public class CriancaServico {
 
     return perfis;
   }
-
 
   public void atualizarCrianca(Crianca crianca) {
     this.criancaRepo.save(crianca);

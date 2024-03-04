@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 public class Crianca implements Autenticavel {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id_crianca")
   private UUID id;
 
@@ -51,6 +50,7 @@ public class Crianca implements Autenticavel {
   private Set<Atividade> atividades;
 
   public Crianca(CriancaDTO criancaDTO, UUID responsavel) {
+    this.id = UUID.randomUUID();
     this.nome = criancaDTO.nome();
     this.conta = new Conta(this.id);
     this.foto = criancaDTO.foto();
