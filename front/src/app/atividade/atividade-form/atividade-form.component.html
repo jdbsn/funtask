@@ -5,31 +5,31 @@
 
   <mat-card-content>
     <form [formGroup]="atividadeForm">
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Descrição</mat-label>
         <input matInput placeholder="ex: Arrumar o quarto" formControlName="descricao" required>
       </mat-form-field>
-      <mat-form-field floatLabel="always">
+      <mat-form-field appearance="outline">
+        <mat-label>Criança</mat-label>
+        <input matInput formControlName="idCrianca">
+      </mat-form-field>
+      <mat-form-field floatLabel="always" appearance="outline">
         <mat-label>Valor Credito</mat-label>
         <input matInput type="number" class="valores" placeholder="0.00" formControlName="valorCredito">
         <span matTextPrefix>R$&nbsp;</span>
       </mat-form-field>
-      <mat-form-field floatLabel="always">
+      <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>Valor Débito</mat-label>
         <input matInput type="number" class="valores" placeholder="0.00" formControlName="valorDebito">
         <span matTextPrefix>R$&nbsp;</span>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Frequência</mat-label>
         <mat-select formControlName="frequencia">
           <mat-option value="DIARIA">Diariamente</mat-option>
           <mat-option value="SEMANAL">Semanalmente</mat-option>
           <mat-option value="MENSAL">Mensalmente</mat-option>
         </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Criança</mat-label>
-        <input matInput formControlName="idCrianca">
       </mat-form-field>
     </form>
   </mat-card-content>

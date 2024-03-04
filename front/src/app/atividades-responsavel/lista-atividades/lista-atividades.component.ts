@@ -23,9 +23,7 @@ export class ListaAtividadesComponent {
   criarAtividade() {
     let _popup = this.dialogo.open(AtividadeFormComponent, {
       enterAnimationDuration:'500ms',
-      exitAnimationDuration:'500ms',
-      height: "80%",
-      width: "30%"
+      exitAnimationDuration:'500ms'
     })
     _popup.afterClosed().subscribe(item=>{
       console.log(item);

@@ -6,6 +6,10 @@ mat-label {
   height: 10px;
 }
 
+h1 {
+  margin-bottom: 0px !important;
+}
+
 .adicionar-crianca-form {
   display: flex;
   flex-direction: column;
@@ -13,7 +17,7 @@ mat-label {
 }
 
 .selecionar-foto-botao {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .errorMsg {
