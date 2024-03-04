@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -28,6 +27,9 @@ public class CriancaController {
     if (!mensagens.isEmpty()) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagens);
     }
+
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
 
   @GetMapping
   public ResponseEntity<List<PerfisDTO>> listarCriancas() {
