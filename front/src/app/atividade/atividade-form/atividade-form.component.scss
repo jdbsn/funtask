@@ -12,10 +12,17 @@ form {
   display: grid;
   align-items: center;
   justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 mat-form-field {
-  margin: 1%,
+  margin: 1%;
+  width: 100%;
+}
+
+mat-dialog-actions {
+  margin-bottom: 2em;
 }
 
 mat-card-footer {

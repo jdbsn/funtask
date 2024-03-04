@@ -8,7 +8,7 @@
   </form>
   <p *ngIf="msgErro" id="errorMsg">{{ msgErro }}</p>
   <mat-dialog-actions align="center">
-    <button mat-stroked-button (click)="onEnviar()">Enviar</button>
+    <button mat-raised-button color="primary" (click)="onEnviar()">Enviar</button>
     <button mat-stroked-button mat-dialog-close>Fechar</button>
   </mat-dialog-actions>
 </mat-dialog-content>
