@@ -11,11 +11,16 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/dialogo-adicionar-crianca.component';
 import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
 import { PerfilRoutingModel } from './perfil-routing.module';
+import { ListaAtividadesComponent } from '../atividades-responsavel/lista-atividades/lista-atividades.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     PerfilResponsavelComponent,
-    DialogoAdicionarCriancaComponent
+    DialogoAdicionarCriancaComponent,
+    ListaAtividadesComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +31,10 @@ import { PerfilRoutingModel } from './perfil-routing.module';
     MatDialogModule,
     ReactiveFormsModule,
     MatGridListModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    MatTableModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [provideNgxMask()]
 })
