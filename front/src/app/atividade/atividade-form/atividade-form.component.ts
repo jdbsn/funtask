@@ -46,7 +46,7 @@ export class AtividadeFormComponent implements OnInit {
         valorCredito: [0, [Validators.required, Validators.min(0)]],
         valorDebito: [0, [Validators.required, Validators.min(0)]],
         frequencia: ['', [Validators.required]],
-        criancaId: ['', [Validators.required]]
+        idCrianca: ['', [Validators.required]]
       })
   }
 
@@ -56,9 +56,14 @@ export class AtividadeFormComponent implements OnInit {
   }
 
   emSalvar() {
-    console.log(this.atividadeForm.value)
-    this.atividadeServico.postAtividade(this.atividadeForm.value).subscribe(result => {});
-    this.dialog.close();
-    this.atividadeForm.reset();
+    this.atividadeServico.postAtividade(this.atividadeForm.value).subscribe({
+      next: () => {
+        this.dialog.close();
+        this.atividadeForm.reset();
+      },
+      error: (erro) => {
+        console.log(erro);
+      }
+    });
   }
 }

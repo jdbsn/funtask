@@ -42,12 +42,14 @@ body {
   font-size: 40px;
   margin-bottom: 50px;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #icone {
-  height: 180px;
+  height: 160px;
   margin-top: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 #nome {

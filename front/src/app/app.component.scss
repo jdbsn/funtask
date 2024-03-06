@@ -10,13 +10,18 @@
 
 mat-toolbar {
   height: 75px;
-  background-image: linear-gradient(to bottom, #5DAFF3, #1C78D3);
+  background-color: white;
   @include mat.elevation(2);
 }
 
 #titulo {
-  color: white;
   font-size: 30px;
+  background-image: linear-gradient(to top, #5DAFF3, #1C78D3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 #login-btn {
@@ -27,5 +32,11 @@ mat-toolbar {
 
 #cadastro-btn {
   font-size: 16px;
-  color: white;
+  color: black;
+}
+
+#botao-opcoes {
+  background-color: #E4E6EB;
+  color: black;
+  letter-spacing: 0.1mm;
 }

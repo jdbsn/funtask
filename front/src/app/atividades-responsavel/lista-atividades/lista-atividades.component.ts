@@ -14,7 +14,7 @@ import { AtividadeFormComponent } from '../../atividade/atividade-form/atividade
 export class ListaAtividadesComponent {
 
   atividades: Observable<Atividade[]>;
-  displayedColumns = ['descricao', 'valorCredito', 'valorDebito', 'frequencia', 'crianca'];
+  displayedColumns = ['descricao', 'valorCredito', 'valorDebito', 'frequencia', 'crianca', 'botoes'];
 
   constructor(private atividadeService: AtividadesService, private dialogo:MatDialog) {
     this.atividades = this.atividadeService.listarAtividades();
@@ -23,12 +23,18 @@ export class ListaAtividadesComponent {
   criarAtividade() {
     let _popup = this.dialogo.open(AtividadeFormComponent, {
       enterAnimationDuration:'500ms',
-      exitAnimationDuration:'500ms',
-      height: "80%",
-      width: "30%"
+      exitAnimationDuration:'500ms'
     })
     _popup.afterClosed().subscribe(item=>{
       console.log(item);
     })
+  }
+
+  editarAtividade() {
+    console.log("editar");
+  }
+
+  apagarAtividade() {
+    console.log("apagar");
   }
 }

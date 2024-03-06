@@ -1,56 +1,53 @@
-<mat-toolbar class="header" color="primary">
-  <span id="titulo">FunTask</span>
-</mat-toolbar>
+<div class="table">
 
-<mat-card>
+  <mat-toolbar class="table-header" color="primary">
+    <span>Atividades Registradas</span>
+    <span class="espacador"></span>
+    <button mat-mini-fab aria-disabled="Adicionar Atividade" (click)="criarAtividade()">
+    <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar>
 
-  <div class="table">
+  <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
 
-    <mat-toolbar class="table-header" color="primary">
-      <span>Atividades Registradas</span>
-      <span class="espacador"></span>
-      <button mat-mini-fab aria-disabled="Adicionar Atividade" (click)="criarAtividade()">
-      <mat-icon>add</mat-icon>
-      </button>
-    </mat-toolbar>
+    <!-- Coluna de Descrição -->
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef> Descrição </th>
+      <td mat-cell *matCellDef="let atividade"> {{atividade.descricao}} </td>
+    </ng-container>
 
-    <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
+    <!-- Coluna de Nome -->
+    <ng-container matColumnDef="valorCredito">
+      <th mat-header-cell *matHeaderCellDef> Crédito </th>
+      <td mat-cell *matCellDef="let atividade"> {{atividade.valorCredito}} </td>
+    </ng-container>
 
-      <!-- Coluna de Descrição -->
-      <ng-container matColumnDef="descricao">
-        <th mat-header-cell *matHeaderCellDef> Descrição </th>
-        <td mat-cell *matCellDef="let atividade"> {{atividade.descricao}} </td>
-      </ng-container>
+    <!-- Coluna de Crédito -->
+    <ng-container matColumnDef="valorDebito">
+      <th mat-header-cell *matHeaderCellDef> Débito </th>
+      <td mat-cell *matCellDef="let atividade"> {{atividade.valorDebito}} </td>
+    </ng-container>
 
-      <!-- Coluna de Nome -->
-      <ng-container matColumnDef="valorCredito">
-        <th mat-header-cell *matHeaderCellDef> Crédito </th>
-        <td mat-cell *matCellDef="let atividade"> {{atividade.valorCredito}} </td>
-      </ng-container>
+    <!-- Coluna de Débito -->
+    <ng-container matColumnDef="frequencia">
+      <th mat-header-cell *matHeaderCellDef> Frequência </th>
+      <td mat-cell *matCellDef="let atividade"> {{atividade.frequencia}} </td>s
+    </ng-container>
 
-      <!-- Coluna de Crédito -->
-      <ng-container matColumnDef="valorDebito">
-        <th mat-header-cell *matHeaderCellDef> Débito </th>
-        <td mat-cell *matCellDef="let atividade"> {{atividade.valorDebito}} </td>
-      </ng-container>
+    <!-- Coluna imagem -->
+    <ng-container matColumnDef="crianca">
+      <th mat-header-cell *matHeaderCellDef> Criança </th>
+      <td mat-cell *matCellDef="let atividade"> {{atividade.nomeCrianca}} </td>
+    </ng-container>
 
-      <!-- Coluna de Débito -->
-      <ng-container matColumnDef="frequencia">
-        <th mat-header-cell *matHeaderCellDef> Frequência </th>
-        <td mat-cell *matCellDef="let atividade"> {{atividade.frequencia.valor}} </td>s
-      </ng-container>
+    <ng-container class="botoes" matColumnDef="botoes">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let atividade"> <div><button id="editar" mat-raised-button color="primary" (click)="editarAtividade()">Editar</button> <button id="apagar" mat-raised-button color="warn" (click)="apagarAtividade()">Apagar</button></div> </td>
+    </ng-container>
 
-      <!-- Coluna imagem -->
-      <ng-container matColumnDef="crianca">
-        <th mat-header-cell *matHeaderCellDef> Criança </th>
-        <td mat-cell *matCellDef="let atividade"> <img [src]="atividade.crianca.foto" alt="Foto da Criança"> </td>
-      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-    </table>
-
-  </div>
-
-</mat-card>
+</div>
