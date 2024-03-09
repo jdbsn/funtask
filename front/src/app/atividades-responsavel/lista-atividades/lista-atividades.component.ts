@@ -14,7 +14,7 @@ import { AtividadeFormComponent } from '../../atividade/atividade-form/atividade
 export class ListaAtividadesComponent {
 
   atividades: Observable<Atividade[]>;
-  displayedColumns = ['descricao', 'valorCredito', 'valorDebito', 'frequencia', 'crianca', 'botoes'];
+  displayedColumns = ['titulo', 'valorCredito', 'valorDebito', 'frequencia', 'botoes'];
 
   constructor(private atividadeService: AtividadesService, private dialogo:MatDialog) {
     this.atividades = this.atividadeService.listarAtividades();

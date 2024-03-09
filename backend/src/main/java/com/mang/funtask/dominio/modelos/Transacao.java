@@ -1,6 +1,5 @@
 package com.mang.funtask.dominio.modelos;
 
-import com.mang.funtask.dominio.dto.request.TransacaoDTO;
 import com.mang.funtask.dominio.enums.TipoTransacao;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,20 +24,32 @@ public class Transacao {
   @Column(name = "id_transacao")
   private UUID id;
 
+  @Column(name = "descricao_transacao")
+  private String descricao;
+
+  @Column(name = "valor_transacao", nullable = false)
+  private double valorTransacao;
+
   @Enumerated(EnumType.STRING)
   @Column(name = "tipo_transacao", nullable = false)
   private TipoTransacao tipoTransacao;
 
-  @Column(name = "id_atividade")
-  private UUID idAtividade;
+  @Column(nullable = false)
+  private double saldoAnterior;
 
-  public Transacao(TransacaoDTO transacaoDTO, UUID atividade) {
-    this.tipoTransacao = transacaoDTO.tipoTransacao();
-    this.idAtividade = atividade;
-  }
+  @Column(nullable = false)
+  private double saldoAtual;
 
-  public Transacao(TipoTransacao tipoTransacao, UUID idAtividade) {
+  @Column(name = "nome_crianca", nullable = false)
+  private String nomeCrianca;
+
+  public Transacao(Crianca crianca, Atividade atividade, TipoTransacao tipoTransacao, double valorTransacao) {
+    this.descricao = "Atividade: " + atividade.getTitulo() +
+                      ((tipoTransacao == TipoTransacao.CREDITO) ? " realizada." : " não realizada.");
     this.tipoTransacao = tipoTransacao;
-    this.idAtividade = idAtividade;
+    this.valorTransacao = valorTransacao;
+    this.saldoAnterior = crianca.getConta().getSaldo();
+    this.saldoAtual = saldoAnterior + valorTransacao;
+    this.nomeCrianca = crianca.getNome();
   }
 }

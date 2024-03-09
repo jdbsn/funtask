@@ -25,6 +25,10 @@ public class Atividade {
   @Column(name = "id_atividade")
   private UUID id;
 
+  @Column(name = "titulo_atividade", nullable = false)
+  private String titulo;
+
+  @Column(name = "descricao_atividade")
   private String descricao;
 
   @Column(name = "valor_credito", nullable = false)
@@ -37,14 +41,15 @@ public class Atividade {
   @Column(nullable = false)
   private Frequencia frequencia;
 
-  @Column(name = "id_crianca", nullable = false)
-  private UUID idCrianca;
+  @Column(name = "id_responsavel", nullable = false)
+  private UUID idResponsavel;
 
   public Atividade(AtividadeDTO atividadeDTO) {
+    this.titulo = atividadeDTO.titulo();
     this.descricao = atividadeDTO.descricao();
     this.valorCredito = atividadeDTO.valorCredito();
     this.valorDebito = atividadeDTO.valorDebito();
     this.frequencia = atividadeDTO.frequencia();
-    this.idCrianca = atividadeDTO.idCrianca();
+    this.idResponsavel = atividadeDTO.idResponsavel();
   }
 }

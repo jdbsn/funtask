@@ -1,10 +1,12 @@
 package com.mang.funtask.servicos;
 
-import com.mang.funtask.dominio.dto.request.TransacaoDTO;
+import com.mang.funtask.dominio.dto.request.TransacaoAtividadeDTO;
 import com.mang.funtask.dominio.enums.TipoTransacao;
 import com.mang.funtask.dominio.modelos.Atividade;
+import com.mang.funtask.dominio.modelos.Conta;
 import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Transacao;
+import com.mang.funtask.repositorios.ContaRepositorio;
 import com.mang.funtask.repositorios.TransacaoRepositorio;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -12,47 +14,49 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransacaoServico {
 
-  private final TransacaoRepositorio transacaoRep;
-  private final AtividadeServico atividadeServico;
+  private final TransacaoRepositorio transacaoRepo;
+  private final ContaRepositorio contaRepo;
   private final CriancaServico criancaServico;
+  private final AtividadeServico atividadeServico;
 
-  public TransacaoServico(TransacaoRepositorio transacaoRep, AtividadeServico atividadeServico,
-      CriancaServico criancaServico) {
-    this.transacaoRep = transacaoRep;
-    this.atividadeServico = atividadeServico;
+  public TransacaoServico(TransacaoRepositorio transacaoRepo, ContaRepositorio contaRepo, AtividadeServico atividadeServico,
+                          CriancaServico criancaServico, AtividadeServico atividadeServico1) {
+    this.transacaoRepo = transacaoRepo;
+    this.contaRepo = contaRepo;
     this.criancaServico = criancaServico;
+    this.atividadeServico = atividadeServico1;
   }
 
-  public String atualizarMesadaPorAtividade(TransacaoDTO transacaoDTO) {
-    Optional<Atividade> atividade = this.atividadeServico.encontrarAtividadePorID(
-        transacaoDTO.idAtividade());
-    if (atividade.isEmpty()) {
-      return "Atividade não encontrada";
+  public String atividadeTransacao(TransacaoAtividadeDTO transacaoDTO) {
+    Optional<Crianca> encontrarCrianca = this.criancaServico.encontrarCrianca(transacaoDTO.idCrianca());
+    Optional<Atividade> encontrarAtidade = this.atividadeServico.encontrarAtividadePorID(transacaoDTO.idAtividade());
+
+    if (encontrarCrianca.isEmpty()) {
+      return "Nenhuma criança encontrada.";
+    }
+    if (encontrarAtidade.isEmpty()) {
+      return "Nenhuma atividade encontrada.";
     }
 
-    Transacao transacao = new Transacao(transacaoDTO, atividade.get().getId());
-    atualizarMesada(transacao, atividade.get());
-    transacaoRep.save(transacao);
+    Crianca crianca = encontrarCrianca.get();
+    Atividade atividade = encontrarAtidade.get();
+    realizarTransacao(crianca, atividade, transacaoDTO.tipoTransacao());
 
-    return "Transação feita com sucesso";
+    return "Transação realizada com sucesso";
   }
 
-  private void atualizarMesada(Transacao transacao, Atividade atividade) {
-    Optional<Crianca> crianca = this.criancaServico.encontrarCrianca(atividade.getIdCrianca());
+  private void realizarTransacao(Crianca crianca, Atividade atividade, TipoTransacao tipoTransacao) {
+    double valorTransacao =
+            (tipoTransacao == TipoTransacao.CREDITO)
+                    ? atividade.getValorCredito()
+                    : -(atividade.getValorDebito());
 
-    if (crianca.isEmpty()) {
-      return;
-    }
-    Crianca criancaMesada = crianca.get();
+    Transacao transacao = new Transacao(crianca, atividade, tipoTransacao, valorTransacao);
 
-    if (transacao.getTipoTransacao().equals(TipoTransacao.CREDITO)) {
-      criancaMesada.setValorMesada(criancaMesada.getValorMesada() + atividade.getValorCredito());
-    }
+    Conta criancaConta = crianca.getConta();
+    criancaConta.setSaldo(criancaConta.getSaldo() + valorTransacao);
 
-    if (transacao.getTipoTransacao().equals(TipoTransacao.DEBITO)) {
-      criancaMesada.setValorMesada(criancaMesada.getValorMesada() - atividade.getValorDebito());
-    }
-
-    this.criancaServico.atualizarCrianca(criancaMesada);
+    transacaoRepo.save(transacao);
+    contaRepo.save(criancaConta);
   }
 }
