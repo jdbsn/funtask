@@ -51,11 +51,6 @@ export class AtividadeFormComponent implements OnInit {
       })
   }
 
-  emCancelar(): void {
-    this.dialog.close();
-    this.atividadeForm.reset();
-  }
-
   emSalvar() {
     this.atividadeServico.postAtividade(this.atividadeForm.value).subscribe({
       next: () => {

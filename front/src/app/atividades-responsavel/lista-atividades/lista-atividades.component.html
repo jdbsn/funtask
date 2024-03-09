@@ -14,7 +14,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let atividade">
         <div>
-          <button id="editar" mat-raised-button color="primary" (click)="onStatus(atividade.id)">Status</button>
+          <button id="editar" mat-raised-button color="primary" (click)="onStatus(atividade.id, atividade.titulo)">Status</button>
         </div>
       </td>
     </ng-container>

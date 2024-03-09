@@ -31,10 +31,11 @@ export class ListaAtividadesComponent {
     })
   }
 
-  onStatus(idAtividade: String) {
+  onStatus(idAtividade: String, tituloAtividade: String, ) {
     this.dialogo.open(DialogoStatusAtvComponent, {
       data: {
-        id: idAtividade
+        id: idAtividade,
+        titulo: tituloAtividade
       },
       enterAnimationDuration:'500ms',
       exitAnimationDuration:'500ms'
