@@ -24,7 +24,7 @@ export class AppComponent {
       filter((event: any): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.mostrarBarra = event.url === '/';
-      this.logado = event.url === '/responsavel';
+      this.logado = event.url === '/perfil/responsavel';
     });
 
     this.titleService.setTitle('FunTask');

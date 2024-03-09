@@ -18,13 +18,15 @@ import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/di
 import { DialogoStatusAtvComponent } from './dialogo-status-atv/dialogo-status-atv.component';
 import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
 import { PerfilRoutingModel } from './perfil-routing.module';
+import { PerfilCriancaComponent } from './perfil-crianca/perfil-crianca.component';
 
 @NgModule({
   declarations: [
     PerfilResponsavelComponent,
     DialogoAdicionarCriancaComponent,
     ListaAtividadesComponent,
-    DialogoStatusAtvComponent
+    DialogoStatusAtvComponent,
+    PerfilCriancaComponent
   ],
   imports: [
     CommonModule,
