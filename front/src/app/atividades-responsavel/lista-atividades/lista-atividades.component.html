@@ -10,10 +10,10 @@
 
   <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
 
-    <!-- Coluna de Descrição -->
-    <ng-container matColumnDef="descricao">
-      <th mat-header-cell *matHeaderCellDef> Descrição </th>
-      <td mat-cell *matCellDef="let atividade"> {{atividade.descricao}} </td>
+    <!-- Coluna de Título -->
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef> Título </th>
+      <td mat-cell *matCellDef="let atividade"> {{atividade.titulo}} </td>
     </ng-container>
 
     <!-- Coluna de Nome -->
