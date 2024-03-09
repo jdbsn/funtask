@@ -27,22 +27,22 @@ public class TransacaoServico {
     this.atividadeServico = atividadeServico1;
   }
 
-  public String atividadeTransacao(TransacaoAtividadeDTO transacaoDTO) {
+  public Optional<String> atividadeTransacao(TransacaoAtividadeDTO transacaoDTO) {
     Optional<Crianca> encontrarCrianca = this.criancaServico.encontrarCrianca(transacaoDTO.idCrianca());
     Optional<Atividade> encontrarAtidade = this.atividadeServico.encontrarAtividadePorID(transacaoDTO.idAtividade());
 
     if (encontrarCrianca.isEmpty()) {
-      return "Nenhuma criança encontrada.";
+      return Optional.of("Nenhuma criança encontrada.");
     }
     if (encontrarAtidade.isEmpty()) {
-      return "Nenhuma atividade encontrada.";
+      return Optional.of("Nenhuma atividade encontrada.");
     }
 
     Crianca crianca = encontrarCrianca.get();
     Atividade atividade = encontrarAtidade.get();
     realizarTransacao(crianca, atividade, transacaoDTO.tipoTransacao());
 
-    return "Transação realizada com sucesso";
+    return Optional.empty();
   }
 
   private void realizarTransacao(Crianca crianca, Atividade atividade, TipoTransacao tipoTransacao) {
@@ -51,9 +51,10 @@ public class TransacaoServico {
                     ? atividade.getValorCredito()
                     : -(atividade.getValorDebito());
 
-    Transacao transacao = new Transacao(crianca, atividade, tipoTransacao, valorTransacao);
+    Conta criancaConta = contaRepo.findByIdCrianca(crianca.getId()).get();
 
-    Conta criancaConta = crianca.getConta();
+    Transacao transacao = new Transacao(crianca, atividade, tipoTransacao, valorTransacao, criancaConta);
+
     criancaConta.setSaldo(criancaConta.getSaldo() + valorTransacao);
 
     transacaoRepo.save(transacao);

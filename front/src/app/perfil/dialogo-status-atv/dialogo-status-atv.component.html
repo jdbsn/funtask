@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <h1 mat-dialog-title>Alterar status da atividade</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="formStatusAtv" class="alterar-status-atv-form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput disabled [value]="titulo">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Criança</mat-label>
+        <mat-select formControlName="idCrianca" required>
+          <mat-option *ngFor="let crianca of criancas" [value]="crianca.id">
+            {{ crianca.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div style="display: flex; justify-content: center;">
+        <mat-radio-group aria-label="Selecione uma opção" formControlName="status" required>
+          <mat-radio-button value="CREDITO">Feito</mat-radio-button>
+          <mat-radio-button value="DEBITO">Não feito</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </form>
+
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-dialog-actions align="center">
+      <button mat-raised-button color=primary mat-button (click)="onSalvar()">Salvar</button>
+      <button mat-stroked-button mat-dialog-close>Cancelar</button>
+    </mat-dialog-actions>
+  </mat-card-footer>
+</mat-card>

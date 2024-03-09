@@ -1,6 +1,6 @@
+import { Crianca } from './../modelo/Crianca';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Crianca } from '../../atividades-responsavel/modelo/crianca';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ export class ResponsavelService {
     }
     var idResponsavel = localStorage.getItem('id_responsavel');
     return this.httpClient.post('api/crianca', {nome, valorMesada, pin, idResponsavel, foto});
+  }
+
+  alterarStatusAtv(idAtividade: String, idCrianca: String, tipoTransacao: String) {
+    return this.httpClient.post('api/responsavel/transacao/atividade', {idAtividade, idCrianca, tipoTransacao});
   }
 
 }

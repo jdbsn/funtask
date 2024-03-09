@@ -5,22 +5,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-
-import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/dialogo-adicionar-crianca.component';
-import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
-import { PerfilRoutingModel } from './perfil-routing.module';
-import { ListaAtividadesComponent } from '../atividades-responsavel/lista-atividades/lista-atividades.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+
+import { ListaAtividadesComponent } from '../atividades-responsavel/lista-atividades/lista-atividades.component';
+import { DialogoAdicionarCriancaComponent } from './dialogo-adicionar-crianca/dialogo-adicionar-crianca.component';
+import { DialogoStatusAtvComponent } from './dialogo-status-atv/dialogo-status-atv.component';
+import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
+import { PerfilRoutingModel } from './perfil-routing.module';
 
 @NgModule({
   declarations: [
     PerfilResponsavelComponent,
     DialogoAdicionarCriancaComponent,
-    ListaAtividadesComponent
+    ListaAtividadesComponent,
+    DialogoStatusAtvComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,9 @@ import { MatIconModule } from '@angular/material/icon';
     NgxMaskDirective,
     MatTableModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [provideNgxMask()]
 })
