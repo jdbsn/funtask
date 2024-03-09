@@ -13,24 +13,26 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Criança</mat-label>
-        <mat-select formControlName="idCrianca">
+        <mat-select formControlName="idCrianca" required>
           <mat-option *ngFor="let crianca of criancas" [value]="crianca.id">
             {{ crianca.nome }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-radio-group aria-label="Selecione uma opção" formControlName="status">
-        <mat-radio-button value="CREDITO">Feito</mat-radio-button>
-        <mat-radio-button value="DEBITO">Não feito</mat-radio-button>
-      </mat-radio-group>
+      <div style="display: flex; justify-content: center;">
+        <mat-radio-group aria-label="Selecione uma opção" formControlName="status" required>
+          <mat-radio-button value="CREDITO">Feito</mat-radio-button>
+          <mat-radio-button value="DEBITO">Não feito</mat-radio-button>
+        </mat-radio-group>
+      </div>
 
     </form>
 
   </mat-card-content>
   <mat-card-footer>
-    <mat-dialog-actions>
-      <button mat-raised-button color=primary mat-button (click)="onSalvar()">Criar</button>
+    <mat-dialog-actions align="center">
+      <button mat-raised-button color=primary mat-button (click)="onSalvar()">Salvar</button>
       <button mat-stroked-button mat-dialog-close>Cancelar</button>
     </mat-dialog-actions>
   </mat-card-footer>
