@@ -4,6 +4,7 @@ import { AtividadesService } from '../servico/atividades.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { AtividadeFormComponent } from '../../atividade/atividade-form/atividade-form.component';
+import { DialogoStatusAtvComponent } from '../../perfil/dialogo-status-atv/dialogo-status-atv.component';
 
 @Component({
   selector: 'app-lista-atividades',
@@ -14,7 +15,7 @@ import { AtividadeFormComponent } from '../../atividade/atividade-form/atividade
 export class ListaAtividadesComponent {
 
   atividades: Observable<Atividade[]>;
-  displayedColumns = ['titulo', 'valorCredito', 'valorDebito', 'frequencia', 'botoes'];
+  displayedColumns = ['status', 'titulo', 'valorCredito', 'valorDebito', 'frequencia', 'botoes'];
 
   constructor(private atividadeService: AtividadesService, private dialogo:MatDialog) {
     this.atividades = this.atividadeService.listarAtividades();
@@ -30,11 +31,21 @@ export class ListaAtividadesComponent {
     })
   }
 
-  editarAtividade() {
+  onStatus(idAtividade: String) {
+    this.dialogo.open(DialogoStatusAtvComponent, {
+      data: {
+        id: idAtividade
+      },
+      enterAnimationDuration:'500ms',
+      exitAnimationDuration:'500ms'
+    })
+  }
+
+  onEditarAtividade() {
     console.log("editar");
   }
 
-  apagarAtividade() {
+  onApagarAtividade() {
     console.log("apagar");
   }
 }

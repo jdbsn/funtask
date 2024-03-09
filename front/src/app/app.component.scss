@@ -28,11 +28,15 @@ mat-toolbar {
   height: 50%;
   width: auto;
   font-size: 20px;
+  background-image: linear-gradient(to bottom, #5DAFF3, #1C78D3);
+  color: white;
+  letter-spacing: 0.1mm;
 }
 
 #cadastro-btn {
   font-size: 16px;
   color: black;
+  letter-spacing: 0.1mm;
 }
 
 #botao-opcoes {
