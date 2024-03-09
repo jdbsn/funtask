@@ -1,6 +1,6 @@
 package com.mang.funtask.controladores;
 
-import com.mang.funtask.dominio.dto.request.TransacaoDTO;
+import com.mang.funtask.dominio.dto.request.TransacaoAtividadeDTO;
 import com.mang.funtask.servicos.TransacaoServico;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +19,9 @@ public class TransacaoController {
     this.transacaoServico = transacaoServico;
   }
 
-  @PostMapping
-  public ResponseEntity<String> fazerTransacao(@RequestBody TransacaoDTO transacaoDTO) {
-    String resposta = transacaoServico.atualizarMesadaPorAtividade(transacaoDTO);
+  @PostMapping("/atividade")
+  public ResponseEntity<String> fazerTransacaoAtividade(@RequestBody TransacaoAtividadeDTO transacaoDTO) {
+    String resposta = transacaoServico.atividadeTransacao(transacaoDTO);
 
     if (!resposta.isEmpty()) {
       return ResponseEntity.status(HttpStatus.OK).body(resposta);
