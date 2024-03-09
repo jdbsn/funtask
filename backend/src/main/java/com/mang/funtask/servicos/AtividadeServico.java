@@ -18,8 +18,8 @@ public class AtividadeServico {
     this.atividadeRepositorio = atividadeRepositorio;
   }
 
-  public List<AtividadeResponseDTO> listarAtividades() {
-    List<Atividade> atividades = atividadeRepositorio.findAll();
+  public List<AtividadeResponseDTO> listarAtividades(UUID idResponsavel) {
+    List<Atividade> atividades = atividadeRepositorio.findAllByIdResponsavel(idResponsavel);
     return atividades.stream().map(AtividadeResponseDTO::new).toList();
   }
 
