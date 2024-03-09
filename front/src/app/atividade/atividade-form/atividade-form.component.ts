@@ -42,11 +42,12 @@ export class AtividadeFormComponent implements OnInit {
 
   ngOnInit(): void {
       this.atividadeForm = this.formBuilder.group({
-        descricao: ['', [Validators.required, Validators.minLength(5)]],
+        titulo: ['', [Validators.required, Validators.minLength(5)]],
         valorCredito: [0, [Validators.required, Validators.min(0)]],
         valorDebito: [0, [Validators.required, Validators.min(0)]],
         frequencia: ['', [Validators.required]],
-        idCrianca: ['', [Validators.required]]
+        descricao: [''],
+        idResponsavel: "8fa13d0e-6905-455e-9001-a27ca60790f6"
       })
   }
 
