@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/atividades")
 public class AtividadeController {
 
+  private static final UUID ID_RESPONSAVEL = UUID.fromString(
+      "8fa13d0e-6905-455e-9001-a27ca60790f6");
   private final AtividadeServico atividadeServico;
 
   public AtividadeController(AtividadeServico atividadeServico) {
@@ -33,7 +35,7 @@ public class AtividadeController {
 
   @GetMapping
   public List<AtividadeResponseDTO> listarAtividades() {
-    return atividadeServico.listarAtividades();
+    return atividadeServico.listarAtividades(ID_RESPONSAVEL);
   }
 
   @PutMapping

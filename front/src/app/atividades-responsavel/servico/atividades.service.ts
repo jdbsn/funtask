@@ -8,13 +8,27 @@ import { Observable, first, tap } from 'rxjs';
 })
 export class AtividadesService {
 
+  private apiUrl = 'api/atividades'
+
   constructor(private httpClient: HttpClient) { }
 
   listarAtividades(): Observable<Atividade[]> {
-    return this.httpClient.get<Atividade[]>('api/atividades')
+    return this.httpClient.get<Atividade[]>(this.apiUrl)
     .pipe(
       first(),
       tap(atividade => console.log(atividade))
     );
+  }
+
+  editarAtividade(atividade: any): Observable<any> {
+    console.log(atividade);
+    return this.httpClient.put(this.apiUrl, atividade);
+  }
+
+  apagarAtividade(id: string): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    console.log(id);
+    console.log(url);
+    return this.httpClient.delete(url);
   }
 }

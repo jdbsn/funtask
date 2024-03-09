@@ -53,8 +53,8 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let atividade">
         <div>
-          <button id="editar" mat-raised-button color="primary" (click)="onEditarAtividade()">Editar</button>
-          <button id="apagar" mat-raised-button color="warn" (click)="onApagarAtividade()">Apagar</button>
+          <button id="editar" mat-raised-button color="primary" (click)="onEditarAtividade(atividade.id)">Editar</button>
+          <button id="apagar" mat-raised-button color="warn" (click)="onApagarAtividade(atividade.id)">Apagar</button>
         </div>
       </td>
     </ng-container>
