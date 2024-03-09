@@ -21,4 +21,8 @@ export class ResponsavelService {
     return this.httpClient.post('api/crianca', {nome, valorMesada, pin, idResponsavel, foto});
   }
 
+  alterarStatusAtv(idAtividade: String, idCrianca: String, tipoTransacao: String) {
+    return this.httpClient.post('api/responsavel/transacao/atividade', {idAtividade, idCrianca, tipoTransacao});
+  }
+
 }

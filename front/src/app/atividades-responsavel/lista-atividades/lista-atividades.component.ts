@@ -26,7 +26,7 @@ export class ListaAtividadesComponent {
     this.dialogo.open(AtividadeFormComponent, {
       enterAnimationDuration:'500ms',
       exitAnimationDuration:'500ms'
-    })
+    });
   }
 
   onStatus(idAtividade: String, tituloAtividade: String, ) {
@@ -37,7 +37,7 @@ export class ListaAtividadesComponent {
       },
       enterAnimationDuration:'500ms',
       exitAnimationDuration:'500ms'
-    })
+    });
   }
 
   onEditarAtividade(id: string) {
@@ -45,7 +45,7 @@ export class ListaAtividadesComponent {
       data: { id: id },
       enterAnimationDuration:'500ms',
       exitAnimationDuration:'500ms'
-    })
+    });
   }
 
   onApagarAtividade(id: string) {

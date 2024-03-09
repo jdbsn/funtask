@@ -43,12 +43,12 @@ public class Transacao {
   @Column(name = "nome_crianca", nullable = false)
   private String nomeCrianca;
 
-  public Transacao(Crianca crianca, Atividade atividade, TipoTransacao tipoTransacao, double valorTransacao) {
+  public Transacao(Crianca crianca, Atividade atividade, TipoTransacao tipoTransacao, double valorTransacao, Conta conta) {
     this.descricao = "Atividade: " + atividade.getTitulo() +
                       ((tipoTransacao == TipoTransacao.CREDITO) ? " realizada." : " não realizada.");
     this.tipoTransacao = tipoTransacao;
     this.valorTransacao = valorTransacao;
-    this.saldoAnterior = crianca.getConta().getSaldo();
+    this.saldoAnterior = conta.getSaldo();
     this.saldoAtual = saldoAnterior + valorTransacao;
     this.nomeCrianca = crianca.getNome();
   }

@@ -13,16 +13,16 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Criança</mat-label>
-        <mat-select>
+        <mat-select formControlName="idCrianca">
           <mat-option *ngFor="let crianca of criancas" [value]="crianca.id">
             {{ crianca.nome }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Feito</mat-radio-button>
-        <mat-radio-button value="0">Não feito</mat-radio-button>
+      <mat-radio-group aria-label="Selecione uma opção" formControlName="status">
+        <mat-radio-button value="CREDITO">Feito</mat-radio-button>
+        <mat-radio-button value="DEBITO">Não feito</mat-radio-button>
       </mat-radio-group>
 
     </form>

@@ -1,7 +1,7 @@
 import { Crianca } from './../modelo/Crianca';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ResponsavelService } from '../servico/responsavel.service';
 
 @Component({
@@ -13,28 +13,29 @@ export class DialogoStatusAtvComponent {
 
   formStatusAtv: FormGroup;
 
-  id: String;
+  idAtv: String;
   titulo: String;
   criancas: Crianca[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private responsavelService: ResponsavelService
+    private responsavelService: ResponsavelService,
+    private dialogRef: MatDialogRef<DialogoStatusAtvComponent>
     ) {
       this.formStatusAtv = this.formBuilder.group({
+        idCrianca: [null],
+        status: [null]
       })
-      this.id = data.id;
+      this.idAtv = data.id;
       this.titulo = data.titulo;
 
     const idResponsavel: string = localStorage.getItem('id_responsavel')!;
     this.responsavelService.listarPerfisCriancas(idResponsavel).subscribe(
       (dados: Crianca[]) => {
-        // Assim que os dados forem emitidos, atribua-os à propriedade criancas
         this.criancas = dados;
       },
       (erro) => {
-        // Trate qualquer erro que possa ocorrer durante a obtenção dos dados
         console.error('Ocorreu um erro ao obter os dados:', erro);
       }
     );
@@ -42,11 +43,17 @@ export class DialogoStatusAtvComponent {
   }
 
   onSalvar() {
-
-  }
-
-  onCancelar() {
-
+    var idCrianca = this.formStatusAtv.value.idCrianca;
+    var status = this.formStatusAtv.value.status;
+    this.responsavelService.alterarStatusAtv(this.idAtv, idCrianca, status).subscribe(
+      {
+        next: () => {
+          this.dialogRef.close();
+        },
+        error: (erro) => {
+          console.log(erro);
+        }
+      });;
   }
 
 }
