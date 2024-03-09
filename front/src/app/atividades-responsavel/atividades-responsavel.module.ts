@@ -8,9 +8,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { EditarAtividadeFormComponent } from './editar-atividade-form/editar-atividade-form.component';
 
 @NgModule({
   declarations: [
+
+
   ],
   imports: [
     CommonModule,
@@ -19,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    EditarAtividadeFormComponent
   ]
 })
 export class AtividadesResponsavelModule { }

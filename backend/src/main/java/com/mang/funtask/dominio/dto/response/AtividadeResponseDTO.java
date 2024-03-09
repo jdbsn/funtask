@@ -5,7 +5,7 @@ import com.mang.funtask.dominio.modelos.Atividade;
 import java.util.UUID;
 
 public record AtividadeResponseDTO(UUID id, String titulo, String descricao, Double valorCredito, Double valorDebito,
-                                   Frequencia frequencia) {
+                                   Frequencia frequencia, UUID idResponsavel) {
     public AtividadeResponseDTO(Atividade atividade) {
     this(
         atividade.getId(),
@@ -13,6 +13,7 @@ public record AtividadeResponseDTO(UUID id, String titulo, String descricao, Dou
         atividade.getDescricao(),
         atividade.getValorCredito(),
         atividade.getValorDebito(),
-        atividade.getFrequencia());
+        atividade.getFrequencia(),
+        atividade.getIdResponsavel());
     }
 }

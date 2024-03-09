@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <h1 mat-dialog-title>Editar Atividade</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="editarAtividadeForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput placeholder="ex: Lavar a louça" formControlName="titulo">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Frequência</mat-label>
+        <mat-select formControlName="frequencia">
+          <mat-option value="DIARIA">Diariamente</mat-option>
+          <mat-option value="SEMANAL">Semanalmente</mat-option>
+          <mat-option value="MENSAL">Mensalmente</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>Valor Credito</mat-label>
+        <input matInput type="number" class="valores" placeholder="0.00" formControlName="valorCredito">
+        <span matTextPrefix>R$&nbsp;</span>
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Valor Débito</mat-label>
+        <input matInput type="number" class="valores" placeholder="0.00" formControlName="valorDebito">
+        <span matTextPrefix>R$&nbsp;</span>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="areaTexto">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput placeholder="ex: Arrumar o quarto" formControlName="descricao"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-dialog-actions>
+      <button mat-raised-button color=primary mat-button (click)="emEditar()">Editar</button>
+      <button mat-raised-button color=red mat-button (click)="emCancelar()">Cancelar</button>
+    </mat-dialog-actions>
+  </mat-card-footer>
+</mat-card>

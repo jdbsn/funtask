@@ -4,6 +4,7 @@ import { AtividadesService } from '../servico/atividades.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { AtividadeFormComponent } from '../../atividade/atividade-form/atividade-form.component';
+import { EditarAtividadeFormComponent } from '../editar-atividade-form/editar-atividade-form.component';
 
 @Component({
   selector: 'app-lista-atividades',
@@ -30,11 +31,21 @@ export class ListaAtividadesComponent {
     })
   }
 
-  editarAtividade() {
-    console.log("editar");
+  editarAtividade(id: string) {
+    let _popup = this.dialogo.open(EditarAtividadeFormComponent, {
+      data: { id: id },
+      enterAnimationDuration:'500ms',
+      exitAnimationDuration:'500ms'
+    })
+    _popup.afterClosed().subscribe(item=>{
+      console.log(item);
+    })
   }
 
-  apagarAtividade() {
-    console.log("apagar");
+  apagarAtividade(id: string) {
+    this.atividadeService.apagarAtividade(id).subscribe(
+      () => console.log('Atividade excluída com sucesso'),
+      error => console.error('Erro ao excluir atividade', error)
+    );
   }
 }
