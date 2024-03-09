@@ -1,17 +1,12 @@
 package com.mang.funtask.dominio.modelos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mang.funtask.dominio.dto.request.CriancaDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import java.util.Set;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,15 +34,11 @@ public class Crianca implements Autenticavel {
   @Column(nullable = false)
   private int pin;
 
-  @Column(name = "valor_mesada", nullable = false)
-  private double valorMesada;
+  @Column(name = "mesada_base", nullable = false)
+  private double mesadaBase;
 
   @Column(name = "id_responsavel", nullable = false)
   private UUID idResponsavel;
-
-  @JsonIgnore
-  @OneToMany(mappedBy = "idCrianca")
-  private Set<Atividade> atividades;
 
   public Crianca(CriancaDTO criancaDTO, UUID responsavel) {
     this.id = UUID.randomUUID();
@@ -55,7 +46,7 @@ public class Crianca implements Autenticavel {
     this.conta = new Conta(this.id);
     this.foto = criancaDTO.foto();
     this.pin = Integer.parseInt(criancaDTO.pin());
-    this.valorMesada = criancaDTO.valorMesada();
+    this.mesadaBase = criancaDTO.valorMesada();
     this.idResponsavel = responsavel;
   }
 }
