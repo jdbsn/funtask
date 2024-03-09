@@ -5,4 +5,5 @@ export interface Atividade {
   valorCredito: number;
   valorDebito: number;
   frequencia: string;
+  idResponsavel: string
   }
