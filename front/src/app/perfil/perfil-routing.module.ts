@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
 import { PerfilCriancaComponent } from './perfil-crianca/perfil-crianca.component';
 import { ResponsavelGuard } from '../guard/responsavel.guard';
+import { CriancaGuard } from '../guard/crianca.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     component: PerfilResponsavelComponent },
   {
     path: 'crianca',
+    canActivate: [CriancaGuard],
     component: PerfilCriancaComponent
   }
 ];
