@@ -19,7 +19,7 @@ public class TransacaoServico {
   private final CriancaServico criancaServico;
   private final AtividadeServico atividadeServico;
 
-  public TransacaoServico(TransacaoRepositorio transacaoRepo, ContaRepositorio contaRepo, AtividadeServico atividadeServico,
+  public TransacaoServico(TransacaoRepositorio transacaoRepo, ContaRepositorio contaRepo,
                           CriancaServico criancaServico, AtividadeServico atividadeServico1) {
     this.transacaoRepo = transacaoRepo;
     this.contaRepo = contaRepo;

@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class AtividadeService {
 
-
   constructor(private http: HttpClient) {}
 
   postAtividade(atividadeDTO: any): Observable<AtividadeDTO> {
-    const url = 'api/atividades/responsavel';
+    const url = 'api/atividades';
     return this.http.post<any>(url, atividadeDTO);
   }
+
 }
