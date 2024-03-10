@@ -23,5 +23,21 @@
 </mat-card>
 
 <mat-card class="card-opcao">
-  <app-lista-atividades></app-lista-atividades>
+  <mat-grid-list cols="4" rowHeight="1:1">
+    <mat-grid-tile  *ngFor="let atividade of (atividades$ | async)" >
+      <mat-card-content>
+        <mat-card class="atividades-card">
+          <mat-card-header>
+            <mat-card-title>{{atividade.titulo}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Descrição: {{atividade.descricao}}</p>
+            <p>Valor crédito: {{atividade.valorCredito}}</p>
+            <p>Valor débito: {{atividade.valorDebito}}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-card-content>
+    </mat-grid-tile>
+  </mat-grid-list>
+
 </mat-card>

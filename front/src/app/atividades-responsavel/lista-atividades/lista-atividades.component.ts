@@ -18,7 +18,7 @@ export class ListaAtividadesComponent {
   atividades: Observable<Atividade[]>;
   displayedColumns = ['status', 'titulo', 'valorCredito', 'valorDebito', 'frequencia', 'botoes'];
 
-  constructor(private atividadeService: AtividadesService, private dialogo:MatDialog) {
+  constructor(private atividadeService: AtividadesService, private dialogo: MatDialog) {
     this.atividades = this.atividadeService.listarAtividades();
   }
 

@@ -32,3 +32,11 @@ mat-toolbar {
   color: black;
   letter-spacing: 0.1mm;
 }
+
+.atividades-card {
+  min-width: 280px;
+  min-height: 180px;
+  margin: 10px;
+  @include mat.elevation(2);
+  border-radius: 10px;
+}

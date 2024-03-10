@@ -1,8 +1,10 @@
-import { pipe } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { CriancaService } from './../servico/crianca.service';
 import { Component } from '@angular/core';
 import { PerfilCrianca } from '../modelo/PerfilCrianca';
 import { Router } from '@angular/router';
+import { Atividade } from '../../atividades-responsavel/modelo/atividade';
+import { AtividadesService } from '../../atividades-responsavel/servico/atividades.service';
 
 @Component({
   selector: 'app-perfil-crianca',
@@ -12,10 +14,12 @@ import { Router } from '@angular/router';
 export class PerfilCriancaComponent {
 
   crianca: PerfilCrianca = {nome: "", saldo: 0, id: "", foto: ""};
+  atividades$: Observable<Atividade[]>;
 
   constructor(
     private router: Router,
-    private criancaService: CriancaService
+    private criancaService: CriancaService,
+    private atividadesService: AtividadesService
   ) {
     const id: string = localStorage.getItem("id_crianca")!;
 
@@ -23,6 +27,8 @@ export class PerfilCriancaComponent {
       this.crianca.nome = crianca.nome;
       this.crianca.saldo = crianca.saldo;
     });
+
+    this.atividades$ = this.atividadesService.listarAtividades();
 
   }
 
