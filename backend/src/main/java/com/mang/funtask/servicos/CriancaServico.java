@@ -1,9 +1,12 @@
 package com.mang.funtask.servicos;
 
 import com.mang.funtask.dominio.dto.request.CriancaDTO;
+import com.mang.funtask.dominio.dto.response.PerfilCriancaDTO;
 import com.mang.funtask.dominio.dto.response.PerfisDTO;
+import com.mang.funtask.dominio.modelos.Conta;
 import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Responsavel;
+import com.mang.funtask.repositorios.ContaRepositorio;
 import com.mang.funtask.repositorios.CriancaRepositorio;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +26,7 @@ public class CriancaServico {
   private ResponsavelServico responsavelServico;
   private CriancaRepositorio criancaRepo;
   private ValidadorServico validadorServico;
+  private ContaRepositorio contaRepo;
 
   public Map<String, String> adicionarCrianca(CriancaDTO dto) {
     Map<String, String> mensagens = new HashMap<>();
@@ -51,6 +55,22 @@ public class CriancaServico {
 
   public Optional<List<Crianca>> encontrarCriancasPorResponsavel(UUID idResponsavel) {
     return criancaRepo.encontrarPorIdResponsavel(idResponsavel);
+  }
+
+  public PerfilCriancaDTO encontrarPerfilCrianca(UUID idCrianca) {
+    Optional<Crianca> crianca = encontrarCrianca(idCrianca);
+
+    if(crianca.isEmpty()) {
+      return null;
+    }
+
+    Conta conta = contaRepo.findByIdCrianca(idCrianca).get();
+
+    Crianca crianca1 = crianca.get();
+    PerfilCriancaDTO dto = new PerfilCriancaDTO(crianca1.getId(), crianca1.getNome(),
+        Base64.encodeBase64String(crianca1.getFoto()), conta.getSaldo());
+
+    return dto;
   }
 
   public List<PerfisDTO> listarCriancasPorResponsavel(UUID idResponsavel) {

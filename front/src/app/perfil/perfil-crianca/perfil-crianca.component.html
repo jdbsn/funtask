@@ -1,1 +1,27 @@
-<p>perfil-crianca works!</p>
+<mat-toolbar color="primary" id="nav-logado">
+  <span id="titulo" [routerLink]="['']">FunTask</span>
+  <span class="espacador"></span>
+  <button mat-fab extended [matMenuTriggerFor]="menu" id="botao-opcoes">
+    <mat-icon svgIcon="perfil"></mat-icon>
+    {{crianca.nome}}
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onTrocarPerfil()">Trocar de perfil</button>
+    <button mat-menu-item (click)="onLogout()">Logout</button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-card class="card-opcao">
+  <mat-card-header>
+    <mat-card-title> Saldo </mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="display: flex">
+
+    R$: {{crianca.saldo}}
+
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card-opcao">
+  <app-lista-atividades></app-lista-atividades>
+</mat-card>
