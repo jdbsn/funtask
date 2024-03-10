@@ -2,27 +2,38 @@
   <mat-card-header>
     <mat-card-title> Crianças </mat-card-title>
   </mat-card-header>
-  <mat-card-content style="display: flex">
-    <mat-card *ngFor="let crianca of criancas" class="card-crianca">
-      <mat-card-header>
-        <div mat-card-avatar class="icone"></div>
-        <mat-card-title class="card-crianca-titulo">{{ crianca.nome }}</mat-card-title>
-        <mat-card-subtitle  class="card-crianca-saldo">Saldo: {{ crianca.nome }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content> </mat-card-content>
-      <mat-card-actions>
-        <button mat-button class="opcao-crianca-btn">Editar</button>
-        <button mat-button class="opcao-crianca-btn">Apagar</button>
-      </mat-card-actions>
-    </mat-card>
 
-    <mat-card class="card-crianca" id="adiciona" (click)="onAdicionarCrianca()" *ngIf="numeroFilhos < 4">
-      <mat-card-content id="adicionar-crianca-card">
-        <img mat-card-image src="../../../assets/adicionar_icon.png" id="adicionar-crianca-icone"/>
-        <span id="adicionar-crianca-titulo">Adicionar criança</span>
-      </mat-card-content>
-    </mat-card>
-  </mat-card-content>
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <ng-container *ngFor="let crianca of criancas; let i = index">
+        <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngIf="i < 4">
+          <mat-card class="card-crianca">
+            <mat-card-header>
+              <div mat-card-avatar class="icone"></div>
+              <mat-card-title class="card-crianca-titulo">{{ crianca.nome }}</mat-card-title>
+              <mat-card-subtitle  class="card-crianca-saldo">Saldo: {{ crianca.nome }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+              <button mat-button class="opcao-crianca-btn">Editar</button>
+              <button mat-button class="opcao-crianca-btn">Apagar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </ng-container>
+
+      <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngIf="numeroFilhos < 4">
+        <mat-card class="card-crianca" id="adiciona" (click)="onAdicionarCrianca()">
+          <mat-card-content id="adicionar-crianca-card">
+            <img mat-card-image src="../../../assets/adicionar_icon.png" id="adicionar-crianca-icone"/>
+            <span id="adicionar-crianca-titulo">Adicionar criança</span>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
 </mat-card>
 
 <mat-card class="card-opcao" id="lista-atividades-card">

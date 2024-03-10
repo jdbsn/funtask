@@ -12,23 +12,23 @@ import { Crianca } from '../modelo/Crianca';
 })
 export class PerfilResponsavelComponent {
 
-  numeroFilhos: number;
+  numeroFilhos: number = 0;
   criancas: Crianca[] = [];
 
   constructor(public dialogo: MatDialog, private responsavelService: ResponsavelService) {
-    this.numeroFilhos = 0;
     const idResponsavel: string = localStorage.getItem('id_responsavel')!;
 
-    this.responsavelService.listarPerfisCriancas(idResponsavel).pipe(
-      map(criancas => ({ criancas, tamanhoLista: criancas.length }))
-    ).subscribe(({ criancas, tamanhoLista }) => {
+    this.responsavelService.listarPerfisCriancas(idResponsavel).subscribe((criancas) => {
       this.criancas = criancas;
-      this.numeroFilhos = tamanhoLista;
+      this.numeroFilhos = this.criancas.length;
     });
+
+
+    console.log(this.numeroFilhos)
+
   }
 
   onAdicionarCrianca() {
-    console.log(this.numeroFilhos)
     this.dialogo.open(DialogoAdicionarCriancaComponent, {data: ''})
   }
 
