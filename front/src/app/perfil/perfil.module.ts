@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,7 +39,8 @@ import { PerfilRoutingModel } from './perfil-routing.module';
     MatIconModule,
     MatSelectModule,
     MatRadioModule,
-    MatMenuModule
+    MatMenuModule,
+    FlexLayoutModule
   ],
   providers: [provideNgxMask()]
 })

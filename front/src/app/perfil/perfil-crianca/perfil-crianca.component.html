@@ -3,7 +3,7 @@
   <span class="espacador"></span>
   <button mat-fab extended [matMenuTriggerFor]="menu" id="botao-opcoes">
     <mat-icon svgIcon="perfil"></mat-icon>
-    {{crianca.nome}}
+    {{ crianca.nome }}
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="onTrocarPerfil()">Trocar de perfil</button>
@@ -13,31 +13,38 @@
 
 <mat-card class="card-opcao">
   <mat-card-header>
-    <mat-card-title> Saldo </mat-card-title>
+    <mat-card-title> Saldo: </mat-card-title>
   </mat-card-header>
-  <mat-card-content style="display: flex">
-
-    R$: {{crianca.saldo}}
-
+  <mat-card-content >
+    <div style="display: flex; align-items: center;"> <!-- Adicionando flexbox e alinhando os itens verticalmente -->
+      <p id="saldo" style="margin-right: 16px;">R$ {{ crianca.saldo }}</p> <!-- Adicionando uma margem à direita para separar o "Ver extrato" -->
+      <span class="espacador"></span> <!-- Adicionando um espaçador flexível -->
+      <p id="saldo" style="margin-right: 16px;"> Ver extrato ></p>
+      <!-- Botão "Ver extrato" -->
+    </div>
   </mat-card-content>
 </mat-card>
 
 <mat-card class="card-opcao">
-  <mat-grid-list cols="4" rowHeight="1:1">
-    <mat-grid-tile  *ngFor="let atividade of (atividades$ | async)" >
-      <mat-card-content>
+  <mat-card-header>
+    <mat-card-title> Atividades </mat-card-title>
+  </mat-card-header>
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let atividade of atividades$ | async">
         <mat-card class="atividades-card">
-          <mat-card-header>
-            <mat-card-title>{{atividade.titulo}}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>Descrição: {{atividade.descricao}}</p>
-            <p>Valor crédito: {{atividade.valorCredito}}</p>
-            <p>Valor débito: {{atividade.valorDebito}}</p>
-          </mat-card-content>
-        </mat-card>
-      </mat-card-content>
-    </mat-grid-tile>
-  </mat-grid-list>
 
+          <mat-card-header>
+            <mat-card-title>{{ atividade.titulo }}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="credito-atividade">Feita - R$: {{ atividade.valorCredito }}</p>
+            <p class="debito-atividade">Não feita - R$: {{ atividade.valorDebito }}</p>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </mat-card>

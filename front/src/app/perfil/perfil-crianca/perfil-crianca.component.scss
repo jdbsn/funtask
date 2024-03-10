@@ -17,6 +17,33 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
+.atividades-card {
+  @include mat.elevation(2);
+  border-radius: 10px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  width: 200px;
+}
+
+.credito-atividade {
+  color: green !important;
+  margin-bottom: 0px;
+}
+
+.debito-atividade {
+  color: red !important;
+}
+
+#saldo {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
 #titulo {
   font-size: 30px;
   background-image: linear-gradient(to top, #5DAFF3, #1C78D3);
@@ -31,12 +58,4 @@ mat-toolbar {
   background-color: #E4E6EB;
   color: black;
   letter-spacing: 0.1mm;
-}
-
-.atividades-card {
-  min-width: 280px;
-  min-height: 180px;
-  margin: 10px;
-  @include mat.elevation(2);
-  border-radius: 10px;
 }
