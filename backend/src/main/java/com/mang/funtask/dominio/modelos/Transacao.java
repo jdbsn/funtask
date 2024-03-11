@@ -45,7 +45,7 @@ public class Transacao {
 
   @ManyToOne
   @JoinColumn(name = "id_crianca", referencedColumnName = "id_crianca")
-  private Crianca idCrianca;
+  private Crianca crianca;
 
   @Column(name = "data_transacao", nullable = false)
   private LocalDateTime horaTransacao;
@@ -57,7 +57,7 @@ public class Transacao {
     this.valorTransacao = valorTransacao;
     this.saldoAnterior = conta.getSaldo();
     this.saldoAtual = saldoAnterior + valorTransacao;
-    this.idCrianca = crianca;
+    this.crianca = crianca;
     this.horaTransacao = LocalDateTime.now();
   }
 }
