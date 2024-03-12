@@ -45,7 +45,7 @@ public class CriancaController {
 
   @PostMapping
   public ResponseEntity<Map<String, String>> adicionarCrianca(@RequestBody CriancaDTO crianca) {
-    Map<String, String> mensagens = criancaServico.adicionarCrianca(crianca);
+    Map<String, String> mensagens = criancaServico.adicionarCrianca(crianca, ID_RESPONSAVEL);
 
     if (!mensagens.isEmpty()) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagens);
