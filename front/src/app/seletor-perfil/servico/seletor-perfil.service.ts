@@ -10,6 +10,7 @@ export class SeletorPerfilService {
 
   private readonly AUTENTICADO = 'autenticado';
   private readonly ID_RESPONSAVEL = 'id_responsavel';
+  private readonly ID_CRIANCA = 'id_crianca';
 
   autenticado: boolean = false;
 
@@ -32,12 +33,28 @@ export class SeletorPerfilService {
             this.autenticado = true;
             localStorage.setItem(this.AUTENTICADO, 'true');
             localStorage.setItem(this.ID_RESPONSAVEL, '' + id);
+          } else {
+            this.autenticado = true;
+            localStorage.setItem(this.AUTENTICADO, 'true');
+            localStorage.setItem(this.ID_CRIANCA, '' + id);
           }
         })
       );
   }
 
-  estaAutenticado(): boolean {
+  estaAutenticadoResponsavel(): boolean {
+    var x = localStorage.getItem(this.ID_RESPONSAVEL)
+    if(localStorage.getItem(this.ID_RESPONSAVEL) == null) {
+      return false;
+    }
+    return this.autenticado;
+  }
+
+  estaAutenticadoCrianca(): boolean {
+    var x = localStorage.getItem(this.ID_CRIANCA)
+    if(localStorage.getItem(this.ID_CRIANCA) === null) {
+      return false;
+    }
     return this.autenticado;
   }
 

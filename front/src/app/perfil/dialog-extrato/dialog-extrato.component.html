@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <h1 mat-dialog-title>Extrato</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Hora/Data</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Saldo Anterior</th>
+            <th>Saldo Atual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transacao of transacoes | async">
+            <td>{{ transacao.horaTransacao | date: 'dd/MM/yyyy' }} - {{ transacao.horaTransacao | date: 'HH:mm' }} </td>
+            <td>{{ transacao.descricao }}</td>
+            <td [style.color]="transacao.tipoTransacao === 'CREDITO' ? 'green' : 'red'">{{ transacao.valorTransacao }}</td>
+            <td>{{ transacao.saldoAnterior }}</td>
+            <td>{{ transacao.saldoAtual }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </mat-card-content>
+</mat-card>

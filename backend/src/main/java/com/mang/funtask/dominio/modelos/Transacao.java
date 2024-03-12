@@ -8,6 +8,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,8 +43,12 @@ public class Transacao {
   @Column(nullable = false)
   private double saldoAtual;
 
-  @Column(name = "nome_crianca", nullable = false)
-  private String nomeCrianca;
+  @ManyToOne
+  @JoinColumn(name = "id_crianca", referencedColumnName = "id_crianca")
+  private Crianca crianca;
+
+  @Column(name = "data_transacao", nullable = false)
+  private LocalDateTime horaTransacao;
 
   public Transacao(Crianca crianca, Atividade atividade, TipoTransacao tipoTransacao, double valorTransacao, Conta conta) {
     this.descricao = "Atividade: " + atividade.getTitulo() +
@@ -50,6 +57,7 @@ public class Transacao {
     this.valorTransacao = valorTransacao;
     this.saldoAnterior = conta.getSaldo();
     this.saldoAtual = saldoAnterior + valorTransacao;
-    this.nomeCrianca = crianca.getNome();
+    this.crianca = crianca;
+    this.horaTransacao = LocalDateTime.now();
   }
 }

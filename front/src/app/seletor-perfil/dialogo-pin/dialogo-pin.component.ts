@@ -40,9 +40,9 @@ export class DialogoPinComponent {
             this.dialogRef.close();
 
             if(this.data.responsavel) {
-              this.router.navigate(['responsavel'])
+              this.router.navigate(['perfil/responsavel']);
             } else {
-              this.router.navigate([''])
+              this.router.navigate(['perfil/crianca']);
             }
 
           },

@@ -8,12 +8,16 @@
 }
 
 .card-crianca {
-  display: flex;
-  min-width: 200px;
-  margin-right: 15px;
-  margin-top: 15px;
-  @include mat.elevation(2);
+  @include mat.elevation(4);
   border-radius: 10px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  width: 200px;
 }
 
 .icone {
@@ -31,17 +35,22 @@
 }
 
 #adicionar-crianca-icone {
-  height: 65px;
-  width: 65px;
+  height: 60px;
+  width: 60px;
 }
 
 #adicionar-crianca-card {
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 92px;
 }
 
 #adicionar-crianca-titulo {
   margin-top: 10px;
   font-weight: 450;
+}
+
+#lista-atividades-card {
+  margin-bottom: 500px;
 }

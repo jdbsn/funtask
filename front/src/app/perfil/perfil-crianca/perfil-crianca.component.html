@@ -1,0 +1,53 @@
+<mat-toolbar color="primary" id="nav-logado">
+  <span id="titulo" [routerLink]="['']">FunTask</span>
+  <span class="espacador"></span>
+  <button mat-fab extended [matMenuTriggerFor]="menu" id="botao-opcoes">
+    <mat-icon svgIcon="perfil"></mat-icon>
+    {{ crianca.nome }}
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onTrocarPerfil()">Trocar de perfil</button>
+    <button mat-menu-item (click)="onLogout()">Logout</button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-card class="card-opcao">
+  <mat-card-header>
+    <mat-card-title> Saldo: </mat-card-title>
+  </mat-card-header>
+  <mat-card-content >
+    <div style="display: flex; align-items: center;">
+      <p id="saldo" style="margin-right: 16px;">R$ {{ crianca.saldo }}</p>
+      <span class="espacador"></span>
+<<<<<<< Updated upstream
+      <p id="saldo" style="margin-right: 16px;"> Ver extrato ></p>
+=======
+      <button mat-raised-button color="primary" (click)="abrirDialogExtrato()">Ver extrato</button>
+>>>>>>> Stashed changes
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card-opcao">
+  <mat-card-header>
+    <mat-card-title> Atividades </mat-card-title>
+  </mat-card-header>
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let atividade of atividades$ | async">
+        <mat-card class="atividades-card">
+
+          <mat-card-header>
+            <mat-card-title>{{ atividade.titulo }}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="credito-atividade">Feita - R$: {{ atividade.valorCredito }}</p>
+            <p class="debito-atividade">Não feita - R$: {{ atividade.valorDebito }}</p>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-card>

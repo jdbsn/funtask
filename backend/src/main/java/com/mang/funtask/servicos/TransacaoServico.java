@@ -8,7 +8,9 @@ import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Transacao;
 import com.mang.funtask.repositorios.ContaRepositorio;
 import com.mang.funtask.repositorios.TransacaoRepositorio;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,12 +21,16 @@ public class TransacaoServico {
   private final CriancaServico criancaServico;
   private final AtividadeServico atividadeServico;
 
-  public TransacaoServico(TransacaoRepositorio transacaoRepo, ContaRepositorio contaRepo, AtividadeServico atividadeServico,
+  public TransacaoServico(TransacaoRepositorio transacaoRepo, ContaRepositorio contaRepo,
                           CriancaServico criancaServico, AtividadeServico atividadeServico1) {
     this.transacaoRepo = transacaoRepo;
     this.contaRepo = contaRepo;
     this.criancaServico = criancaServico;
     this.atividadeServico = atividadeServico1;
+  }
+
+  public List<Transacao> listarTransacoesCrianca(UUID id) {
+    return transacaoRepo.findAllByIdCrianca(id);
   }
 
   public Optional<String> atividadeTransacao(TransacaoAtividadeDTO transacaoDTO) {
