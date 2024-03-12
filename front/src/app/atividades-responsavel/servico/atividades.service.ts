@@ -15,8 +15,7 @@ export class AtividadesService {
   listarAtividades(): Observable<Atividade[]> {
     return this.httpClient.get<Atividade[]>(this.apiUrl)
     .pipe(
-      first(),
-      tap(atividade => console.log(atividade))
+      first()
     );
   }
 

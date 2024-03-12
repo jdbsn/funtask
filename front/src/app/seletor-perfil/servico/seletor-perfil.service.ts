@@ -44,7 +44,6 @@ export class SeletorPerfilService {
 
   estaAutenticadoResponsavel(): boolean {
     var x = localStorage.getItem(this.ID_RESPONSAVEL)
-    console.log("Responsável - " + x);
     if(localStorage.getItem(this.ID_RESPONSAVEL) == null) {
       return false;
     }
@@ -53,7 +52,6 @@ export class SeletorPerfilService {
 
   estaAutenticadoCrianca(): boolean {
     var x = localStorage.getItem(this.ID_CRIANCA)
-    console.log("Criança - " + x);
     if(localStorage.getItem(this.ID_CRIANCA) === null) {
       return false;
     }

@@ -13,4 +13,18 @@ export class CriancaService {
     return this.httpClient.get<PerfilCrianca>('/api/crianca/' + idCrianca);
   }
 
+<<<<<<< Updated upstream
+=======
+  listarExtrato(id: string): Observable<Transacao[]> {
+    console.log(id)
+    var rota = '/api/responsavel/transacao/' + id
+    console.log(rota)
+    return this.httpClient.get<Transacao[]>(rota)
+    .pipe(
+      first(),
+      tap(transacao => console.log(transacao))
+    );
+  }
+
+>>>>>>> Stashed changes
 }

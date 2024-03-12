@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("api/responsavel/transacao")
+@RequestMapping("/api/responsavel/transacao")
 public class TransacaoController {
 
   private final TransacaoServico transacaoServico;

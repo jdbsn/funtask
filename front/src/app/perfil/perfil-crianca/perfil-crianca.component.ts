@@ -15,15 +15,16 @@ export class PerfilCriancaComponent {
 
   crianca: PerfilCrianca = {nome: "", saldo: 0, id: "", foto: ""};
   atividades$: Observable<Atividade[]>;
+  id: string;
 
   constructor(
     private router: Router,
     private criancaService: CriancaService,
     private atividadesService: AtividadesService
   ) {
-    const id: string = localStorage.getItem("id_crianca")!;
+    this.id = localStorage.getItem("id_crianca")!;
 
-    this.criancaService.encontrarDados(id).subscribe(crianca => {
+    this.criancaService.encontrarDados(this.id).subscribe(crianca => {
       this.crianca.nome = crianca.nome;
       this.crianca.saldo = crianca.saldo;
     });
@@ -32,6 +33,17 @@ export class PerfilCriancaComponent {
 
   }
 
+<<<<<<< Updated upstream
+=======
+  abrirDialogExtrato() {
+    this.dialogo.open(DialogExtratoComponent, {
+      data: this.id,
+      enterAnimationDuration:'500ms',
+      exitAnimationDuration:'500ms'
+    });
+  }
+
+>>>>>>> Stashed changes
   onTrocarPerfil() {
     localStorage.clear();
     this.router.navigate(['selecionar-perfil']);
