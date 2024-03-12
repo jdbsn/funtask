@@ -5,6 +5,8 @@ import { PerfilCrianca } from '../modelo/PerfilCrianca';
 import { Router } from '@angular/router';
 import { Atividade } from '../../atividades-responsavel/modelo/atividade';
 import { AtividadesService } from '../../atividades-responsavel/servico/atividades.service';
+import { DialogExtratoComponent } from '../dialog-extrato/dialog-extrato.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-perfil-crianca',
@@ -20,7 +22,8 @@ export class PerfilCriancaComponent {
   constructor(
     private router: Router,
     private criancaService: CriancaService,
-    private atividadesService: AtividadesService
+    private atividadesService: AtividadesService,
+    private dialogo: MatDialog
   ) {
     this.id = localStorage.getItem("id_crianca")!;
 
@@ -33,8 +36,6 @@ export class PerfilCriancaComponent {
 
   }
 
-<<<<<<< Updated upstream
-=======
   abrirDialogExtrato() {
     this.dialogo.open(DialogExtratoComponent, {
       data: this.id,
@@ -43,7 +44,6 @@ export class PerfilCriancaComponent {
     });
   }
 
->>>>>>> Stashed changes
   onTrocarPerfil() {
     localStorage.clear();
     this.router.navigate(['selecionar-perfil']);
