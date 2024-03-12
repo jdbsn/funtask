@@ -28,10 +28,10 @@ public class CriancaServico {
   private ValidadorServico validadorServico;
   private ContaRepositorio contaRepo;
 
-  public Map<String, String> adicionarCrianca(CriancaDTO dto, UUID idResponsavel) {
+  public Map<String, String> adicionarCrianca(CriancaDTO dto) {
     Map<String, String> mensagens = new HashMap<>();
     Optional<Responsavel> responsavel = responsavelServico.encontrarResponsavel(
-        idResponsavel);
+        dto.idResponsavel());
 
     if (responsavel.isEmpty()) {
       mensagens.put("responsavel", "Responsável não encontrado.");
@@ -43,7 +43,7 @@ public class CriancaServico {
       return mensagens;
     }
 
-    Crianca crianca = new Crianca(dto, idResponsavel);
+    Crianca crianca = new Crianca(dto, dto.idResponsavel());
     criancaRepo.save(crianca);
 
     return mensagens;
