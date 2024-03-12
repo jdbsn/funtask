@@ -18,6 +18,7 @@ import { DialogoStatusAtvComponent } from './dialogo-status-atv/dialogo-status-a
 import { PerfilCriancaComponent } from './perfil-crianca/perfil-crianca.component';
 import { PerfilResponsavelComponent } from './perfil-responsavel/perfil-responsavel.component';
 import { PerfilRoutingModel } from './perfil-routing.module';
+import { DialogExtratoComponent } from './dialog-extrato/dialog-extrato.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PerfilRoutingModel } from './perfil-routing.module';
     DialogoAdicionarCriancaComponent,
     ListaAtividadesComponent,
     DialogoStatusAtvComponent,
-    PerfilCriancaComponent
+    PerfilCriancaComponent,
+    DialogExtratoComponent
   ],
   imports: [
     CommonModule,
