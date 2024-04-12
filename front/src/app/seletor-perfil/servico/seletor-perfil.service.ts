@@ -19,7 +19,7 @@ export class SeletorPerfilService {
   }
 
   listarPerfis() : Observable<Perfil[]> {
-    return this.httpClient.get<Perfil[]>('api/listar-perfis')
+    return this.httpClient.get<Perfil[]>('api/responsavel/listar-perfis')
       .pipe(
         first()
       );

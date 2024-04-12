@@ -28,6 +28,9 @@ public class Responsavel implements Autenticavel {
   private String nome;
 
   @Column(nullable = false)
+  private String email;
+
+  @Column(nullable = false)
   private String senha;
 
   @Column(nullable = false)
