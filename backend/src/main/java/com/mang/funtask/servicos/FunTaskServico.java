@@ -4,9 +4,9 @@ import com.mang.funtask.dominio.dto.response.PerfisDTO;
 import com.mang.funtask.dominio.modelos.Crianca;
 import com.mang.funtask.dominio.modelos.Responsavel;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
@@ -18,20 +18,23 @@ public class FunTaskServico {
   private CriancaServico criancaServico;
   private ResponsavelServico responsavelServico;
 
-  public List<PerfisDTO> encontrarPerfis(UUID idResponsavel) {
-    List<PerfisDTO> perfis = new ArrayList<>();
+  public List<PerfisDTO> encontrarPerfis(String email) {
+    Optional<Responsavel> responsavelOpt = responsavelServico.encontrarPorEmail(email);
 
-    Optional<Responsavel> responsavel = responsavelServico.encontrarResponsavel(idResponsavel);
-    Optional<List<Crianca>> criancas = criancaServico.encontrarCriancasPorResponsavel(idResponsavel);
-
-    if (responsavel.isPresent()) {
-      Responsavel responsavel1 = responsavel.get();
-      perfis.add(new PerfisDTO(responsavel1.getId(), responsavel1.getNome(), null, true));
+    if (responsavelOpt.isEmpty()) {
+      return Collections.emptyList();
     }
-    if (criancas.isPresent()) {
-      List<Crianca> criancas1 = criancas.get();
 
-      criancas1.forEach(c ->
+    List<PerfisDTO> perfis = new ArrayList<>();
+    Responsavel responsavel = responsavelOpt.get();
+    perfis.add(new PerfisDTO(responsavel.getId(), responsavel.getNome(), null, true));
+
+    Optional<List<Crianca>> criancasOpt = criancaServico.encontrarCriancasPorResponsavel(responsavel.getId());
+
+    if (criancasOpt.isPresent()) {
+      List<Crianca> criancas = criancasOpt.get();
+
+      criancas.forEach(c ->
           perfis.add(
               new PerfisDTO(c.getId(), c.getNome(), Base64.encodeBase64String(c.getFoto()), false))
       );

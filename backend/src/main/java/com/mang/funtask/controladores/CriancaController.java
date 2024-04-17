@@ -8,6 +8,7 @@ import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +19,13 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CriancaController {
 
-  private static final UUID ID_RESPONSAVEL = UUID.fromString("8fa13d0e-6905-455e-9001-a27ca60790f6");
   private CriancaServico criancaServico;
 
   @GetMapping
   public ResponseEntity<List<PerfisDTO>> listarCriancas() {
-    List<PerfisDTO> criancas = criancaServico.listarCriancasPorResponsavel(ID_RESPONSAVEL);
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+    List<PerfisDTO> criancas = criancaServico.listarCriancasPorResponsavel(email);
 
     if(criancas.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

@@ -67,14 +67,14 @@ public class CriancaServico {
     Conta conta = contaRepo.findByIdCrianca(idCrianca).get();
     Crianca crianca1 = crianca.get();
 
-    PerfilCriancaDTO dto = new PerfilCriancaDTO(crianca1.getId(), crianca1.getNome(),
+    return new PerfilCriancaDTO(crianca1.getId(), crianca1.getNome(),
         Base64.encodeBase64String(crianca1.getFoto()), conta.getSaldo());
-
-    return dto;
   }
 
-  public List<PerfisDTO> listarCriancasPorResponsavel(UUID idResponsavel) {
-    Optional<List<Crianca>> criancas = criancaRepo.encontrarPorIdResponsavel(idResponsavel);
+  public List<PerfisDTO> listarCriancasPorResponsavel(String email) {
+    Responsavel responsavel = responsavelServico.encontrarPorEmail(email).get();
+
+    Optional<List<Crianca>> criancas = criancaRepo.encontrarPorIdResponsavel(responsavel.getId());
 
     if (criancas.isEmpty()) {
       return Collections.emptyList();

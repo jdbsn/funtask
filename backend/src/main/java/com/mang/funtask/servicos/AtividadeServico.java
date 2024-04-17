@@ -4,22 +4,24 @@ import com.mang.funtask.dominio.dto.request.AtividadeDTO;
 import com.mang.funtask.dominio.dto.response.AtividadeResponseDTO;
 import com.mang.funtask.dominio.modelos.Atividade;
 import com.mang.funtask.repositorios.AtividadeRepositorio;
+import com.mang.funtask.repositorios.ResponsavelRepositorio;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class AtividadeServico {
 
   private final AtividadeRepositorio atividadeRepositorio;
+  private final ResponsavelRepositorio responsavelRepo;
 
-  public AtividadeServico(AtividadeRepositorio atividadeRepositorio) {
-    this.atividadeRepositorio = atividadeRepositorio;
-  }
-
-  public List<AtividadeResponseDTO> listarAtividades(UUID idResponsavel) {
+  public List<AtividadeResponseDTO> listarAtividades(String email) {
+    UUID idResponsavel = responsavelRepo.findIDByEmail(email);
     List<Atividade> atividades = atividadeRepositorio.findAllByIdResponsavel(idResponsavel);
+
     return atividades.stream().map(AtividadeResponseDTO::new).toList();
   }
 

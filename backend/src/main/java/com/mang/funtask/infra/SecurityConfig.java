@@ -28,7 +28,9 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(autorize -> autorize
-            .requestMatchers(HttpMethod.GET, "/api/crianca").authenticated()
+            .requestMatchers("/api/crianca/**").authenticated()
+            .requestMatchers(HttpMethod.GET, "/api/responsavel/listar-perfis").authenticated()
+            .requestMatchers("/api/atividades/**").authenticated()
             .anyRequest().permitAll()
         )
         .addFilterBefore(securityFiltro, UsernamePasswordAuthenticationFilter.class)

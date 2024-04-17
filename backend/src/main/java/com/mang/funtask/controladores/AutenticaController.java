@@ -4,7 +4,6 @@ import com.mang.funtask.dominio.dto.request.AcessoPerfilDTO;
 import com.mang.funtask.dominio.dto.request.LoginDTO;
 import com.mang.funtask.dominio.modelos.Autenticavel;
 import com.mang.funtask.servicos.AutenticaServico;
-import com.mang.funtask.servicos.ResponsavelServico;
 import com.mang.funtask.servicos.TokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/autenticarPin")
+@RequestMapping("/api")
 @AllArgsConstructor
 public class AutenticaController {
 
@@ -40,7 +39,7 @@ public class AutenticaController {
     }
   }
 
-  @PostMapping
+  @PostMapping("/autenticarPin")
   public ResponseEntity<String> autenticarPin(@RequestBody AcessoPerfilDTO dto) {
     Autenticavel perfil = autenticaServico.encontrarPerfil(dto.id());
 

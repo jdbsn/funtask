@@ -44,6 +44,12 @@ public class TokenService {
     }
   }
 
+  public String recuperarEmail(String authHeader) {
+    String token = authHeader.replace("Bearer ", "");
+
+    return this.validarToken(token);
+  }
+
   private Instant gerarTempoExpiracao() {
     return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
   }
